@@ -1,5 +1,7 @@
 package com.shopping.entity;
-
+/*
+ * 管理员实体类
+ * */
 public class Account {
 	/*
 	 *  aid       NATIONAL VARCHAR(20)    AUTO_INCREMENT,

@@ -1,5 +1,7 @@
 package com.shopping.entity;
-
+/*
+ * 商品类别实体类
+ * */
 public class Category {
 	/*
 	 *  cid      INT                     AUTO_INCREMENT,

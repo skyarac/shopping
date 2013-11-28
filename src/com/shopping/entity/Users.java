@@ -1,5 +1,7 @@
 package com.shopping.entity;
-
+/*
+ * 会员实体类
+ * */
 public class Users {
 	/*
 	 *  uid         INT                     AUTO_INCREMENT,

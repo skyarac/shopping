@@ -1,7 +1,10 @@
 package com.shopping.entity;
 
 import java.util.Date;
-
+/*
+ * 商品类
+ * 
+ * */
 public class Goods {
 	/*
 	 *  gid           INT                       AUTO_INCREMENT,

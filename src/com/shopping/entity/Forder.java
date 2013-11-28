@@ -3,7 +3,9 @@ package com.shopping.entity;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+/*
+ * è®¢å•é¡¹ç±»
+ * */
 public class Forder {
  /*
   *     fid        INT                     AUTO_INCREMENT,
@@ -32,7 +34,7 @@ public class Forder {
 	private Account account;
 	private Status status;
 	/*
-	 * ´æ´¢¹ºÎïÏî
+	 * ï¿½æ´¢ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	 * */
 	private List<Sorder> sorders=new ArrayList<Sorder>();
 	public int getFid() {

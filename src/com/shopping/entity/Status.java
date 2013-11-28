@@ -1,5 +1,7 @@
 package com.shopping.entity;
-
+/*
+ * 商品状态类
+ * */
 public class Status {
 /*
  *  sid       INT                     AUTO_INCREMENT,

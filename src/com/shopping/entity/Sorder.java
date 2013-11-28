@@ -1,5 +1,7 @@
 package com.shopping.entity;
-
+/*
+ * 订单明细类
+ * */
 public class Sorder {
 	/*
 	 *  sid        INT                     AUTO_INCREMENT,
