@@ -1,7 +1,5 @@
 package com.shopping.servlet;
 
-
-
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -16,11 +14,9 @@ import com.shopping.util.DigestUtil;
 
 public class PaySer extends HttpServlet {
 
-	
-	private ForderDao forderImpl=new ForderDaoImpl();
-	/**
-	 * Constructor of the object.
-	 */
+	private static final long serialVersionUID = 1L;
+	private ForderDao forderImpl = new ForderDaoImpl();
+
 	public PaySer() {
 		super();
 	}
@@ -33,48 +29,21 @@ public class PaySer extends HttpServlet {
 		// Put your code here
 	}
 
-	/**
-	 * The doGet method of the servlet. <br>
-	 * 
-	 * This method is called when a form has its tag value method equals to get.
-	 * 
-	 * @param request
-	 *            the request send by the client to the server
-	 * @param response
-	 *            the response send by the server to the client
-	 * @throws ServletException
-	 *             if an error occurred
-	 * @throws IOException
-	 *             if an error occurred
-	 */
+	
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		doPost(request, response);
 	}
 
-	/**
-	 * The doPost method of the servlet. <br>
-	 * 
-	 * This method is called when a form has its tag value method equals to
-	 * post.
-	 * 
-	 * @param request
-	 *            the request send by the client to the server
-	 * @param response
-	 *            the response send by the server to the client
-	 * @throws ServletException
-	 *             if an error occurred
-	 * @throws IOException
-	 *             if an error occurred
-	 */
+	
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String status = request.getParameter("status");
 		if (status.equals("pay")) {
-			// 加密的密�?由支付中介提�?
+			// 
 			String keyValue = "w0P75wMZ203fr46r5i70V556WHFa94j14yW5J6vuh4yo3nRl5jsqF3c41677";
-			
+
 			String p0_Cmd = formatString("Buy");
 			String p1_MerId = formatString("10000940764");
 			String p2_Order = formatString(request.getParameter("p2_Order"));
@@ -90,7 +59,7 @@ public class PaySer extends HttpServlet {
 			pd_FrpId = pd_FrpId.toUpperCase();
 			String pr_NeedResponse = "0";
 			String hmac = formatString("");
-			// 把明文追加到�?��字符串中,然后加密
+			// 
 			StringBuffer infoBuffer = new StringBuffer();
 			infoBuffer.append(p0_Cmd);
 			infoBuffer.append(p1_MerId);
@@ -105,9 +74,9 @@ public class PaySer extends HttpServlet {
 			infoBuffer.append(pa_MP);
 			infoBuffer.append(pd_FrpId);
 			infoBuffer.append(pr_NeedResponse);
-			// 加密后的密文存储到了hmac�?
+			// 
 			hmac = DigestUtil.hmacSign(infoBuffer.toString(), keyValue);
-			// 把明文和密文都存储到request.setAttribute�?
+			// 
 			request.setAttribute("p0_Cmd", p0_Cmd);
 			request.setAttribute("p1_MerId", p1_MerId);
 			request.setAttribute("p2_Order", p2_Order);
@@ -127,8 +96,8 @@ public class PaySer extends HttpServlet {
 		} else if (status.equals("success")) {
 			PrintWriter out = response.getWriter();
 			String keyValue = "w0P75wMZ203fr46r5i70V556WHFa94j14yW5J6vuh4yo3nRl5jsqF3c41677";
-			String r0_Cmd = formatString(request.getParameter("r0_Cmd")); 
-			String p1_MerId = "10000940764"; 
+			String r0_Cmd = formatString(request.getParameter("r0_Cmd"));
+			String p1_MerId = "10000940764";
 			String r1_Code = formatString(request.getParameter("r1_Code"));
 			String r2_TrxId = formatString(request.getParameter("r2_TrxId"));
 			String r3_Amt = formatString(request.getParameter("r3_Amt"));
@@ -157,8 +126,9 @@ public class PaySer extends HttpServlet {
 			infoBuffer.append(r9_BType);
 			String md5 = DigestUtil.hmacSign(infoBuffer.toString(), keyValue);
 			if (md5.equals(hmac) && r1_Code.equals("1")) {
-				//�?支付成功的订单状态改成已支付,并个给用户显示支付成功信�?
-				out.print("易宝支付的流水号:" + r2_TrxId + "已支付的订单�?" + r6_Order + "已支付的金额" + r3_Amt);
+				// �?支付成功的订单状态改成已支付,并个给用户显示支付成功信�?
+				out.print("易宝支付的流水号:" + r2_TrxId + "已支付的订单�?" + r6_Order
+						+ "已支付的金额" + r3_Amt);
 				forderImpl.updateForderStatus(Integer.parseInt(r6_Order), 2);
 			} else {
 				out.println("fail !!!!");
@@ -166,12 +136,7 @@ public class PaySer extends HttpServlet {
 		}
 	}
 
-	/**
-	 * Initialization of the servlet. <br>
-	 * 
-	 * @throws ServletException
-	 *             if an error occure
-	 */
+	
 	public void init() throws ServletException {
 		// Put your code here
 	}
