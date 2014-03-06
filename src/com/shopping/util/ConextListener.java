@@ -25,10 +25,11 @@ public class ConextListener implements ServletContextListener {
 				categoryDaoImpl.getCategorys(""));
 		ShoppingTimerTask shoppingTimer = new ShoppingTimerTask();
 		shoppingTimer.setApplication(event.getServletContext());
-		new Timer().schedule(shoppingTimer, 0L, 1000 * 60*60*24);
-		// 把银行图标存储到application中
+		new Timer().schedule(shoppingTimer, 0L, 1000 * 60 * 60 * 24);
+		// 
 		File file = new File(event.getServletContext().getRealPath("/")
 				+ "image/bank");
+
 		String[] fileNames = null;
 		if (file.isDirectory()) {
 			fileNames = file.list(new FilenameFilter() {
