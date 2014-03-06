@@ -28,6 +28,7 @@
 				<prop key="datetime_format">yyyy-MM-dd HH:mm:ss</prop>
 				<prop key="classic_compatible">true</prop>
 				<prop key="template_exception_handler">ignore</prop>
+				<prop key="tag_syntax">auto_detect</prop>
 			</props>
 		</property>
 		<!-- <property name="freemarkerVariables">
