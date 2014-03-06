@@ -26,10 +26,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <center>
     <c:choose>
        <c:when test="${sessionScope.users==null}">
-                          您好目前您的状态是游客,请<a href="/shopping/ulogin.jsp">登录</a>|<a href="/shopping/uRegister.jsp">注册</a>
+                          您好目前您的状态是游客,请<a href='<c:url value="/ulogin.jsp"/>'>登录</a>|<a href="<c:url value='/uRegister.jsp'/>">注册</a>
        </c:when>
        <c:otherwise>
-	             您好${sessionScope.users.ulogin}欢迎来到在线购物商城,如果您不是此用户则<a href="/shopping/user/UserSer?status=logout">退出</a>
+	             您好${sessionScope.users.ulogin}欢迎来到在线购物商城,如果您不是此用户则<a href="<c:url value='/user/UserSer?status=logout'/>">退出</a>
 	   </c:otherwise>
     </c:choose>
     <!-- 首页热点商品展示 -->
@@ -39,7 +39,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				
 				<tr>
 					<td height="23" colspan="4">
-						<a href="/shopping/AccountSer?status=goodsList&cid=${list[0].category.cid}&ctype=${list[0].category.ctype}">==${list[0].category.ctype}</a>
+						<a href="<c:url value='/AccountSer?status=goodsList&cid=${list[0].category.cid}&ctype=${list[0].category.ctype}'/>">==${list[0].category.ctype}</a>
 					</td>
 				</tr>
 				<tr>
@@ -50,7 +50,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							cellspacing="0">
 							<tr>
 								<td height="113">
-									<img src="/shopping/image/${goods.gpic}" />
+									<img src="<c:url value='/sys-resource/shopping/image/${goods.gpic}'/>" />
 								</td>
 							</tr>
 							<tr>
@@ -61,7 +61,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<tr>
 								<td height="26">
 									${goods.gname} 
-									<c:url value="/detail.jsp" var="detail">
+									<c:url value="<c:url value='/view/jsp/front/detail.jsp'/>" var="detail">
 										<c:param name="gid" value="${goods.gid}"></c:param>
 										<c:param name="gname" value="${goods.gname}" />
 										<c:param name="gprice" value="${goods.gprice}" />

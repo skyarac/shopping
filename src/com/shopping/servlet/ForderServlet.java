@@ -49,10 +49,10 @@ public class ForderServlet extends HttpServlet {
 			sorder.setGoods(goods);
 			request.getSession().setAttribute("forder",
 					forderDaoImpl.addSorder(forder, sorder));
-			response.sendRedirect("/shopping/users/showCar.jsp");
+			response.sendRedirect("/shopping/view/jsp/member/showCar.jsp");
 		} else if (status.equals("deleteForder")) {
 			request.getSession().setAttribute("forder", new Forder());
-			response.sendRedirect("/shopping/users/showCar.jsp");
+			response.sendRedirect("/shopping/view/jsp/member/showCar.jsp");
 		} else if (status.equals("saveForder")) {
 			Forder forder = (Forder) request.getSession()
 					.getAttribute("forder");
@@ -68,7 +68,7 @@ public class ForderServlet extends HttpServlet {
 			forder.setUsers((Users) request.getSession().getAttribute("users"));
 			request.getSession().setAttribute("forder",
 					forderDaoImpl.saveForder(forder));
-			response.sendRedirect("/shopping/users/chooseBank.jsp");
+			response.sendRedirect("/shopping/view/jsp/member/chooseBank.jsp");
 		} else if (status.equals("updateSorder")) {
 			int gid = Integer.parseInt(request.getParameter("gid"));
 			int snumber = Integer.parseInt(request.getParameter("snumber"));
@@ -87,7 +87,7 @@ public class ForderServlet extends HttpServlet {
 					.getAttribute("forder");
 			request.getSession().setAttribute("forder",
 					forderDaoImpl.deleteSorder(forder, gid));
-			response.sendRedirect("/shopping/users/showCar.jsp");
+			response.sendRedirect("/shopping/view/jsp/member/showCar.jsp");
 		}
 	}
 

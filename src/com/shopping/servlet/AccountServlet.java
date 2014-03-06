@@ -55,11 +55,11 @@ public class AccountServlet extends HttpServlet {
 			if (account == null) { 
 				// µÇÂ¼Ê§°Ü
 				request.setAttribute("error", "¶Ô²»ÆðµÇÂ¼Ê§°Ü!");
-				request.getRequestDispatcher("/alogin.jsp").forward(request,
+				request.getRequestDispatcher("/view/jsp/front/alogin.jsp").forward(request,
 						response);
 			} else {
 				request.getSession().setAttribute("account", account);
-				response.sendRedirect("/shopping/admin/index.jsp");
+				response.sendRedirect("/shopping/view/jsp/admin/index.jsp");
 			}
 		} else if (status.equals("usersManage")) {
 
@@ -67,7 +67,7 @@ public class AccountServlet extends HttpServlet {
 			users = usersDao.getUsers();
 			request.getSession().setAttribute("users", users);
 
-			response.sendRedirect("/shopping/admin/users.jsp");
+			response.sendRedirect("/shopping/view/jsp/admin/users.jsp");
 		} else if (status.equals("deleteUser")) {
 			int uid = Integer.parseInt(request.getParameter("uid"));
 			usersDao.delete(uid);
@@ -75,7 +75,7 @@ public class AccountServlet extends HttpServlet {
 			users = usersDao.getUsers();
 			request.getSession().setAttribute("users", users);
 
-			response.sendRedirect("/shopping/admin/users.jsp");
+			response.sendRedirect("/shopping/view/jsp/admin/users.jsp");
 		} else if (status.equals("userModify")) {
 			Users user = new Users();
 			user.setUaddress(request.getParameter("uaddress"));
@@ -92,23 +92,23 @@ public class AccountServlet extends HttpServlet {
 			List<Users> users = new ArrayList<Users>();
 			users = usersDao.getUsers();
 			request.getSession().setAttribute("users", users);
-			response.sendRedirect("/shopping/admin/users.jsp");
+			response.sendRedirect("/shopping/view/jsp/admin/users.jsp");
 
 		} else if (status.equals("forderManage")) {
 			List<Forder> forders = new ArrayList<Forder>();
 			forders = forderDao.getForders();
 			request.getSession().setAttribute("forders", forders);
-			response.sendRedirect("/shopping/admin/forder.jsp");
+			response.sendRedirect("/shopping/view/jsp/admin/forder.jsp");
 
 		} else if (status.equals("forderModify")) {
 			int fid = Integer.parseInt(request.getParameter("fid"));
 			int sid = Integer.parseInt(request.getParameter("sid"));
 			forderDao.updateForderStatus(fid, sid);
-			response.sendRedirect("/shopping/admin/forder.jsp");
+			response.sendRedirect("/shopping/view/jsp/admin/forder.jsp");
 		} else if (status.equals("categoryAndGoodsInfo")) {
 			List<Category> categorys = categoryDao.getCategorys();
 			request.getSession().setAttribute("categorys", categorys);
-			response.sendRedirect("/shopping/admin/category_goods_info.jsp");
+			response.sendRedirect("/shopping/view/jsp/admin/category_goods_info.jsp");
 		} else if (status.equals("deleteCategory")) {
 			categoryDao.delete(Integer.parseInt(request.getParameter("cid")));
 			response.sendRedirect("/shopping/AccountSer?status=categoryAndGoodsInfo");
@@ -189,7 +189,7 @@ public class AccountServlet extends HttpServlet {
 			response.sendRedirect("/shopping/goodslist.jsp");
 		} else if (status.equals("alogout")) {
 			request.getSession().setAttribute("account", null);
-			response.sendRedirect("/shopping/alogin.jsp");
+			response.sendRedirect("/shopping/view/jsp/front/alogin.jsp");
 		}
 	}
 

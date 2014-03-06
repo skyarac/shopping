@@ -40,7 +40,7 @@ public class UserServlet extends HttpServlet {
 			users = um.usersLogin(users);
 			if (users == null) {// 登录失败
 				request.setAttribute("error", "用户名和密码错误");
-				request.getRequestDispatcher("/ulogin.jsp").forward(request,
+				request.getRequestDispatcher("/shopping/view/jsp/front/ulogin.jsp").forward(request,
 						response);
 			} else {
 				// 创建一个购物车方便以后购物
@@ -73,7 +73,7 @@ public class UserServlet extends HttpServlet {
 				response.sendRedirect(request.getContextPath() + "/index.jsp");
 			} else {
 				request.setAttribute("error", "该用户名已被注册");
-				request.getRequestDispatcher("/uRegister.jsp").forward(request,
+				request.getRequestDispatcher("/shopping/view/jsp/front/uRegister.jsp").forward(request,
 						response);
 			}
 		} else if (status.equals("logout")) {
