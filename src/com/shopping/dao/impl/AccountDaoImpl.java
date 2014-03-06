@@ -9,7 +9,7 @@ import java.util.List;
 
 import com.shopping.dao.AccountDao;
 import com.shopping.entity.Account;
-import com.shopping.entity.Users;
+import com.shopping.entity.User;
 import com.shopping.util.DataBaseConnection;
 
 public class AccountDaoImpl implements AccountDao {

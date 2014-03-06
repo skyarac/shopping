@@ -2,11 +2,11 @@ package com.shopping.dao;
 
 import java.util.List;
 
-import com.shopping.entity.Users;
+import com.shopping.entity.User;
 
 public interface UsersDao {
 	/*注册时，添加用户*/
-	public Users save(Users users);
+	public User save(User users);
 	/*
 	 * 根据用户登陆名ulogin查询用户是否存在
 	 * */
@@ -14,7 +14,7 @@ public interface UsersDao {
 	/*
 	 * 根据传入的用户查询用户并返回用信息
 	 * */
-	public Users queryUsers(Users users);
+	public User queryUsers(User users);
 	/*
 	 * 根据用户uid删除用户
 	 * */
@@ -22,11 +22,11 @@ public interface UsersDao {
 	/*
 	 * 查询所有用户
 	 * */
-	public List<Users> getUsers();
+	public List<User> getUsers();
 	/*
 	 * 更改用户信息，前台封装用户uid
 	 * */
-	public void usersModify(Users users);
+	public void usersModify(User users);
 		
 	
  

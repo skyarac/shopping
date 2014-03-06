@@ -14,7 +14,7 @@ import com.shopping.entity.Forder;
 import com.shopping.entity.Goods;
 import com.shopping.entity.Sorder;
 import com.shopping.entity.Status;
-import com.shopping.entity.Users;
+import com.shopping.entity.User;
 
 public class ForderServlet extends HttpServlet {
 
@@ -65,7 +65,7 @@ public class ForderServlet extends HttpServlet {
 			Account account = new Account();
 			forder.setAccount(account);
 			forder.setStatus(new Status(1));
-			forder.setUsers((Users) request.getSession().getAttribute("users"));
+			forder.setUsers((User) request.getSession().getAttribute("users"));
 			request.getSession().setAttribute("forder",
 					forderDaoImpl.saveForder(forder));
 			response.sendRedirect("/shopping/view/jsp/member/chooseBank.jsp");

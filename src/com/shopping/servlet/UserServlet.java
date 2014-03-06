@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.shopping.entity.Forder;
-import com.shopping.entity.Users;
+import com.shopping.entity.User;
 import com.shopping.service.UsersManager;
 import com.shopping.service.impl.UsersManagerImpl;
 
@@ -34,7 +34,7 @@ public class UserServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String status = request.getParameter("status");
 		if (status.equals("login")) {
-			Users users = new Users();
+			User users = new User();
 			users.setUlogin(request.getParameter("ulogin"));
 			users.setUpass(request.getParameter("upass"));
 			users = um.usersLogin(users);
@@ -58,7 +58,7 @@ public class UserServlet extends HttpServlet {
 
 			}
 		} else if (status.equals("register")) {
-			Users users = new Users();
+			User users = new User();
 			users.setUaddress(request.getParameter("uaddress"));
 			users.setUemail(request.getParameter("uemail"));
 			users.setUlogin(request.getParameter("ulogin"));

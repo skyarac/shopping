@@ -30,7 +30,7 @@ public class Forder {
 	private String femail;
 	private String fpost;
 	private String faddress;
-	private Users users;
+	private User users;
 	private Account account;
 	private Status status;
 	/*
@@ -91,10 +91,10 @@ public class Forder {
 	public void setFaddress(String faddress) {
 		this.faddress = faddress;
 	}
-	public Users getUsers() {
+	public User getUsers() {
 		return users;
 	}
-	public void setUsers(Users users) {
+	public void setUsers(User users) {
 		this.users = users;
 	}
 	public Account getAccount() {

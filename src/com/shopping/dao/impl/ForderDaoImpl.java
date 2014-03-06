@@ -13,7 +13,7 @@ import com.shopping.entity.Account;
 import com.shopping.entity.Forder;
 import com.shopping.entity.Sorder;
 import com.shopping.entity.Status;
-import com.shopping.entity.Users;
+import com.shopping.entity.User;
 import com.shopping.util.DataBaseConnection;
 
 public class ForderDaoImpl implements ForderDao {
@@ -177,7 +177,7 @@ public class ForderDaoImpl implements ForderDao {
 				Status status=new Status();
 				status.setSid(rs.getInt("sid"));
 				forder.setStatus(status);
-				Users users=new Users();
+				User users=new User();
 				users.setUid(rs.getInt("uid"));
 				forder.setUsers(users);
 				forders.add(forder);

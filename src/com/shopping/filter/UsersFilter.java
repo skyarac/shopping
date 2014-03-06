@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.shopping.entity.Forder;
-import com.shopping.entity.Users;
+import com.shopping.entity.User;
 
 public class UsersFilter implements Filter{
 

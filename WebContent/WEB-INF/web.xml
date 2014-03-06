@@ -1,124 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
-	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+	id="WebApp_ID" version="2.5">
+	<display-name>app-springmvc</display-name>
+	
+	<!-- <context-param> 
+        <param-name>contextConfigLocation</param-name> 
+        <param-value>classpath:applicationContext.xml</param-value> 
+    </context-param>
+    
 	<listener>
-		<listener-class>com.shopping.util.ConextListener</listener-class>
-	</listener>
-     <!-- 容器监听器 -->
-	<filter>
-		<filter-name>CharacterEncoding</filter-name>
-		<filter-class>com.shopping.filter.EncodingFilter</filter-class>
-	</filter>
-	<filter-mapping>
-		<filter-name>CharacterEncoding</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping>
-	 <!-- 项目字符编码过滤器 -->
-	<filter>
-	  <filter-name>UsersFilter</filter-name>
-	  <filter-class>com.shopping.filter.UsersFilter</filter-class>
-	</filter>
-	<filter-mapping>
-	   <filter-name>UsersFilter</filter-name>
-	   <url-pattern>/users/*</url-pattern>
-	</filter-mapping>
-	<filter-mapping>
-	  <filter-name>UsersFilter</filter-name>
-	  <url-pattern>/ForderSer</url-pattern>
-	</filter-mapping>
-	<!-- 购物时非法用户过滤器 -->
-	<filter>
-	   <filter-name>adminFilter</filter-name>
-	   <filter-class>com.shopping.filter.AdminFilter</filter-class>
-	</filter>
-	<filter-mapping>
-	   <filter-name>adminFilter</filter-name>
-	   <url-pattern>/admin/*</url-pattern>
-	</filter-mapping>
-	<!-- 管理员(客服)非法访问过滤器 -->
-	
-	
-	
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener> -->
 
 	<servlet>
-		<servlet-name>usersSer</servlet-name>
-		<servlet-class>com.shopping.servlet.UserServlet</servlet-class>
+		<servlet-name>springmvc</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>usersSer</servlet-name>
-		<url-pattern>/user/UserSer</url-pattern>
+		<servlet-name>springmvc</servlet-name>
+		<url-pattern>*.do</url-pattern>
 	</servlet-mapping>
-	<!-- 用户登录或者注册Servlet -->
-	<servlet>
-	  <servlet-name>ForderSer</servlet-name>
-	  <servlet-class>com.shopping.servlet.ForderServlet</servlet-class>
-	</servlet>
-    <servlet-mapping>
-	   <servlet-name>ForderSer</servlet-name>
-	   <url-pattern>/ForderSer</url-pattern>
-	</servlet-mapping>
-	<!-- 订单处理Servlet -->
-	<servlet>
-	   <servlet-name>AccountSer</servlet-name>
-	   <servlet-class>com.shopping.servlet.AccountServlet</servlet-class>
-	</servlet>
-	<servlet-mapping>
-	  <servlet-name>AccountSer</servlet-name>
-	  <url-pattern>/AccountSer</url-pattern>
-	</servlet-mapping>
-	<!-- 客服处理Servlet -->
-	<servlet>
-	   <servlet-name>PaySer</servlet-name>
-	   <servlet-class>com.shopping.servlet.PaySer</servlet-class>
-	</servlet>
-	<servlet-mapping>
-	  <servlet-name>PaySer</servlet-name>
-	  <url-pattern>/PaySer</url-pattern>
-	</servlet-mapping>
-	<!-- 银行支付处理 -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
-	
-
-
-
-
-
 </web-app>

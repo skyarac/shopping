@@ -8,15 +8,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.shopping.dao.UsersDao;
-import com.shopping.entity.Users;
+import com.shopping.entity.User;
 import com.shopping.util.DataBaseConnection;
 
 public class UsersDaoImpl implements UsersDao {
 	/*
 	 * 添加用户
 	 */
-	public Users save(Users users) {  //由void改为Users
-		Users user = users;
+	public User save(User users) {  //由void改为Users
+		User user = users;
 		DataBaseConnection dbc = new DataBaseConnection();
 		String sql = "INSERT INTO users(uid,ulogin,uname,upass,usex,uphone,upost,uemail,uaddress)"
 				+ " VALUES(null,?,?,?,?,?,?,?,?)";
@@ -99,8 +99,8 @@ public class UsersDaoImpl implements UsersDao {
 	/*
 	 * 根据传入的用户查询若存在即返回用户信息
 	 */
-	public Users queryUsers(Users users) {
-		Users temp = null;
+	public User queryUsers(User users) {
+		User temp = null;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -113,7 +113,7 @@ public class UsersDaoImpl implements UsersDao {
 			pstmt.setString(2, users.getUpass());
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				temp = new Users();
+				temp = new User();
 				temp.setUaddress(rs.getString("uaddress"));
 				temp.setUemail(rs.getString("uemail"));
 				temp.setUid(rs.getInt("uid"));
@@ -172,9 +172,9 @@ public class UsersDaoImpl implements UsersDao {
 	/*
 	 * 返回所有用户
 	 */
-	public List<Users> getUsers() {
-		List<Users> users = new ArrayList<Users>();
-		Users user = null;
+	public List<User> getUsers() {
+		List<User> users = new ArrayList<User>();
+		User user = null;
 		Connection conn = null;
 		ResultSet rs = null;
 		PreparedStatement pstmt = null;
@@ -185,7 +185,7 @@ public class UsersDaoImpl implements UsersDao {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
-				user = new Users();
+				user = new User();
 				user.setUaddress(rs.getString("uaddress"));
 				user.setUemail(rs.getString("uemail"));
 				user.setUid(rs.getInt("uid"));
@@ -213,7 +213,7 @@ public class UsersDaoImpl implements UsersDao {
 /*
  * 更改用户信息，前台用户编号uid
  * */
-	public void usersModify(Users users) {
+	public void usersModify(User users) {
 		Connection conn=null;
 		PreparedStatement pstmt=null;
 		DataBaseConnection dbc=new DataBaseConnection();

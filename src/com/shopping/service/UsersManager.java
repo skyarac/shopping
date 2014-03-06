@@ -1,15 +1,15 @@
 package com.shopping.service;
 
-import com.shopping.entity.Users;
+import com.shopping.entity.User;
 
 public interface UsersManager {
 	/*
 	 * 用户登录功能
 	 * */
-	public Users usersLogin(Users users);
+	public User usersLogin(User users);
 	/*
 	 * 用户注册功能
 	 * */
-	public Users usersRegister(Users users);
+	public User usersRegister(User users);
 
 }

@@ -23,7 +23,7 @@ import com.shopping.entity.Account;
 import com.shopping.entity.Category;
 import com.shopping.entity.Forder;
 import com.shopping.entity.Goods;
-import com.shopping.entity.Users;
+import com.shopping.entity.User;
 
 public class AccountServlet extends HttpServlet {
 
@@ -63,7 +63,7 @@ public class AccountServlet extends HttpServlet {
 			}
 		} else if (status.equals("usersManage")) {
 
-			List<Users> users = new ArrayList<Users>();
+			List<User> users = new ArrayList<User>();
 			users = usersDao.getUsers();
 			request.getSession().setAttribute("users", users);
 
@@ -71,13 +71,13 @@ public class AccountServlet extends HttpServlet {
 		} else if (status.equals("deleteUser")) {
 			int uid = Integer.parseInt(request.getParameter("uid"));
 			usersDao.delete(uid);
-			List<Users> users = new ArrayList<Users>();
+			List<User> users = new ArrayList<User>();
 			users = usersDao.getUsers();
 			request.getSession().setAttribute("users", users);
 
 			response.sendRedirect("/shopping/view/jsp/admin/users.jsp");
 		} else if (status.equals("userModify")) {
-			Users user = new Users();
+			User user = new User();
 			user.setUaddress(request.getParameter("uaddress"));
 			user.setUemail(request.getParameter("uemail"));
 			// System.out.println(request.getRequestURL());
@@ -89,7 +89,7 @@ public class AccountServlet extends HttpServlet {
 			user.setUpost(request.getParameter("upost"));
 			user.setUsex(request.getParameter("usex"));
 			usersDao.usersModify(user);
-			List<Users> users = new ArrayList<Users>();
+			List<User> users = new ArrayList<User>();
 			users = usersDao.getUsers();
 			request.getSession().setAttribute("users", users);
 			response.sendRedirect("/shopping/view/jsp/admin/users.jsp");

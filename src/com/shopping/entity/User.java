@@ -1,8 +1,7 @@
 package com.shopping.entity;
 /*
- * 会员实体类
- * */
-public class Users {
+ * 会员实体�? * */
+public class User {
 	/*
 	 *  uid         INT                     AUTO_INCREMENT,
         ulogin      NATIONAL VARCHAR(20)    NOT NULL,
