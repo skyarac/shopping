@@ -1,0 +1,257 @@
+[#include "include/header.html"]
+<div class="wrapper">
+  <div class="header_container"> 
+    <!--Header Starts-->
+    <header>
+      <div class="top_bar clear"> 
+        <!--Language Switcher Starts-->
+        <div class="language_switch"> <a class="active" href="#" title="ENGLISH">EN</a> <a href="#" title="FRENCH">FR</a> </div>
+        <!--Language Switcher Ends--> 
+        
+        <!--Top Links Starts-->
+        <ul class="top_links">
+          <li><a href="#">My Account</a></li>
+          <li><a href="#">Wishlist</a></li>
+          <li><a href="#">Login</a></li>
+          <li class="highlight"><a href="#">Sign Up</a></li>
+        </ul>
+        <!--Top Links Ends--> 
+      </div>
+      <!--Logo Starts-->
+      <h1 class="logo"> <a href="index.html"><img src="/shopping/common/default/images/logo.png" /></a> </h1>
+      <!--Logo Ends--> 
+            <!--Responsive NAV-->            <div class="responsive-nav" style="display:none;">
+                <select onchange="if(this.options[this.selectedIndex].value != ''){window.top.location.href=this.options[this.selectedIndex].value}">
+                    <option selected="" value="" />Navigate...
+                    <option value="index.html" /> Home
+                    <option value="good_list.html" /> -  Listing Page
+                    <option value="good_detail.html" />Product Page
+                    <option value="shop_cart.html" /> -  Shopping Cart
+                    <option value="buy.html" /> -  Checkout
+                    <option value="contact.html" />Contact
+                </select>
+            </div>
+            <!--Responsive NAV-->
+      
+      <!--Search Starts-->
+      <form class="header_search" />
+        <div class="form-search">
+          <input id="search" type="text" name="q" value="" class="input-text" autocomplete="off" placeholder="Search" />
+          <button type="submit" title="Search"></button>
+        </div>
+      </form>
+      <!--Search Ends--> 
+      
+    </header>
+    <!--Header Ends--> 
+  </div>
+  <div class="navigation_container"> 
+    <!--Navigation Starts-->
+    <nav>
+      <ul class="primary_nav">
+        <li class="active"><a href="leisure_listing.html">Women</a> 
+          <!--SUbmenu Starts-->
+          <ul class="sub_menu">
+            <li> <a href="#">Dresses</a>
+              <ul>
+                <li><a href="#">Skirts</a></li>
+                <li><a href="#">Shorts</a></li>
+                <li><a href="#">Premium Pants</a></li>
+                <li><a href="#">Khakis</a></li>
+                <li><a href="#">Casual Pants</a></li>
+                <li><a href="#">Jeans</a></li>
+                <li><a href="#">Outerwear & Blazers</a></li>
+              </ul>
+            </li>
+            <li> <a href="#">Accessories</a>
+              <ul>
+                <li><a href="#">Sunglasses</a></li>
+                <li><a href="#">Scarves</a></li>
+                <li><a href="#">Hair Accessories</a></li>
+                <li><a href="#">Hats and Gloves</a></li>
+                <li><a href="#">Lifestyle</a></li>
+                <li><a href="#">Jeans</a></li>
+                <li><a href="#">Outerwear & Blazers</a></li>
+              </ul>
+            </li>
+          </ul>
+          <!--SUbmenu Ends--> 
+        </li>
+        <li><a href="good_list.html">Men</a> 
+          <!--SUbmenu Starts-->
+          <ul class="sub_menu">
+            <li> <a href="#">Men Summer Collection</a>
+              <ul>
+                <li><a href="#">Premium Pants</a></li>
+                <li><a href="#">Khakis</a></li>
+                <li><a href="#">Casual Pants</a></li>
+                <li><a href="#">Jeans</a></li>
+                <li><a href="#">Outerwear & Blazers</a></li>
+              </ul>
+            </li>
+            <li> <a href="#">Accessories</a>
+              <ul>
+                <li><a href="#">Sunglasses</a></li>
+                <li><a href="#">Scarves</a></li>
+                <li><a href="#">Hair Accessories</a></li>
+                <li><a href="#">Hats and Gloves</a></li>
+                <li><a href="#">Jeans</a></li>
+              </ul>
+            </li>
+          </ul>
+          <!--SUbmenu Ends--> 
+        </li>
+        <li><a href="good_list.html">Kids</a></li>
+        <li><a href="good_list.html">Fashion</a></li>
+        <li><a href="#">Accessories</a></li>
+      </ul>
+      <div class="minicart"> <a href="#" class="minicart_link"> <span class="item"><b>2</b> ITEM /</span> <span class="price"><b>$69.20</b></span> </a>
+        <div class="cart_drop"> <span class="darw"></span>
+          <ul>
+            <li><img src="/shopping/common/default/images/mini_c_item1.png" /><a href="#">Clogs Beach/Garden Clog</a> <span class="price">$49.90</span></li>
+            <li><img src="/shopping/common/default/images/mini_c_item2.png" /><a href="#">Faded chambray shorts</a> <span class="price">$12.90</span></li>
+            <div class="cart_bottom">
+              <div class="subtotal_menu"><small>Subtotal:</small><big>$69.20</big></div>
+              <a href="leisure_cart.html">Checkout</a></div>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!--Navigation Ends--> 
+  </div>
+  <div class="section_container"> 
+    <!--Mid Section Starts-->
+    <section>
+    <ul class="breadcrumb">
+      <li><a href="#">Home</a></li>
+      <li><a href="good_list.html">Women</a></li>
+      <li class="active"><a href="#">Shirts & Blouses</a></li>
+    </ul>
+    <!--PRODUCT DETAIL STARTS-->
+    <div id="product_detail"> 
+      <!--Product Left Starts-->
+      <div class="product_leftcol"> <img src="/shopping/common/default/images/pr_main.jpg" /> <span class="pr_info">ROLL OVER IMAGE TO ZOOM</span>
+        <ul class="pr_gallery">
+          <li><a href="#"><img src="/shopping/common/default/images/pr_gal1.jpg" /></a></li>
+          <li><a href="#"><img src="/shopping/common/default/images/pr_gal2.jpg" /></a></li>
+          <li><a href="#"><img src="/shopping/common/default/images/pr_gal3.jpg" /></a></li>
+        </ul>
+      </div>
+      <!--Product Left Ends--> 
+      <!--Product Right Starts-->
+      <div class="product_rightcol"> <small class="pr_type">Formal Dress</small>
+        <h1>Notch-collar shirt</h1>
+        <p class="short_dc" /> Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris.
+        
+        <div class="pr_price"> <big>$49.90</big> <small>$72.00</small> </div>
+        <div class="size_info">
+          <div class="size_sel">
+            <label>Available Size :</label>
+            <select>
+              <option />SELECT
+              <option />32
+            </select>
+          </div>
+          <div class="color_sel">
+            <label>Color :</label>
+            <select>
+              <option />BEIGE
+              <option />CORAL
+            </select>
+          </div>
+        </div>
+        <div class="qty_info">
+          <div class="quantity">
+            <label>Quantity :</label>
+            <select>
+              <option />1
+              <option />2
+            </select>
+          </div>
+        </div>
+        <div class="add_to_buttons">
+          <button onclick="parent.location='leisure_cart.html'" class="add_cart">Add to Cart</button>
+          <span>or</span>
+          <ul>
+            <li><a href="#">Add to Wishlist</a></li>
+          </ul>
+        </div>
+        <div class="product_overview">
+          <h4>Quick Overview</h4>
+          <ul>
+            <li>Long sleeves with single button cuffs.</li>
+            <li>Cuffs can be rolled up and secured with button-tabs.</li>
+            <li>Standing collar with notched detailing.</li>
+            <li>Front button placket.</li>
+            <li>Hem is longer in back.</li>
+          </ul>
+        </div>
+      </div>
+    <!--Product Right Ends--> 
+  </div>
+  <!--PRODUCT DETAIL ENDS--> 
+  <!--Product List Starts-->
+  <div class="products_list products_slider">
+    <h2 class="sub_title">You might also like</h2>
+    <ul id="first-carousel" class="first-and-second-carousel jcarousel-skin-tango">
+      <li> <a class="product_image"><img src="/shopping/common/default/images/pr_l_1.jpg" /></a>
+        <div class="product_info">
+          <h3><a href="good_detail.html">CN Clogs Beach/Garden Clog</a></h3>
+          <small>Comfortable and fun to wear these clogs are the latest trend in fash</small> </div>
+        <div class="price_info"> <a href="#">+ Add to wishlist</a>
+          <button class="price_add" title="" type="button"><span class="pr_price">$76.00</span><span class="pr_add">Add to Cart</span></button>
+        </div>
+      </li>
+      <li> <a class="product_image"><img src="/shopping/common/default/images/pr_l_2.jpg" /></a>
+        <div class="product_info">
+          <h3><a href="good_detail.html">CN Clogs Beach/Garden Clog</a></h3>
+          <small>Comfortable and fun to wear these clogs are the latest trend in fash</small> </div>
+        <div class="price_info"> <a href="#">+ Add to wishlist</a>
+          <button class="price_add" title="" type="button"><span class="pr_price">$76.00</span><span class="pr_add">Add to Cart</span></button>
+        </div>
+      </li>
+      <li> <a class="product_image"><img src="/shopping/common/default/images/pr_l_3.jpg" /></a>
+        <div class="product_info">
+          <h3><a href="good_detail.html">CN Clogs Beach/Garden Clog</a></h3>
+          <small>Comfortable and fun to wear these clogs are the latest trend in fash</small> </div>
+        <div class="price_info"> <a href="#">+ Add to wishlist</a>
+          <button class="price_add" title="" type="button"><span class="pr_price">$76.00</span><span class="pr_add">Add to Cart</span></button>
+        </div>
+      </li>
+      <li> <a class="product_image"><img src="/shopping/common/default/images/pr_l_5.jpg" /></a>
+        <div class="product_info">
+          <h3><a href="good_detail.html">CN Clogs Beach/Garden Clog</a></h3>
+          <small>Comfortable and fun to wear these clogs are the latest trend in fash</small> </div>
+        <div class="price_info"> <a href="#">+ Add to wishlist</a>
+          <button class="price_add" title="" type="button"><span class="pr_price">$76.00</span><span class="pr_add">Add to Cart</span></button>
+        </div>
+      </li>
+      <li> <a class="product_image"><img src="/shopping/common/default/images/pr_l_1.jpg" /></a>
+        <div class="product_info">
+          <h3><a href="leisure_detail.html">CN Clogs Beach/Garden Clog</a></h3>
+          <small>Comfortable and fun to wear these clogs are the latest trend in fash</small> </div>
+        <div class="price_info"> <a href="#">+ Add to wishlist</a>
+          <button class="price_add" title="" type="button"><span class="pr_price">$76.00</span><span class="pr_add">Add to Cart</span></button>
+        </div>
+      </li>
+      <li> <a class="product_image"><img src="/shopping/common/default/pr_l_2.jpg" /></a>
+        <div class="product_info">
+          <h3><a href="good_detail.html">CN Clogs Beach/Garden Clog</a></h3>
+          <small>Comfortable and fun to wear these clogs are the latest trend in fash</small> </div>
+        <div class="price_info"> <a href="#">+ Add to wishlist</a>
+          <button class="price_add" title="" type="button"><span class="pr_price">$76.00</span><span class="pr_add">Add to Cart</span></button>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <!--Product List Ends--> 
+  
+  
+  
+  </section>
+  <!--Mid Section Ends--> 
+</div>
+[#include "include/footer.html"]
+</div>
+</body>
+</html>

@@ -15,6 +15,9 @@
 						http://www.springframework.org/schema/aop/spring-aop-3.0.xsd 
 						http://www.springframework.org/schema/tx 
 						http://www.springframework.org/schema/tx/spring-tx-3.0.xsd ">
+						
+	<context:annotation-config />  
+	<context:component-scan base-package="com.shopping.web.action"/>
 	
 	<!-- Freemarker配置 -->
 	<bean id="freemarkerConfig"
@@ -47,15 +50,16 @@
 	</bean>
 	
 	
-	<bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+	<!-- <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
 		<property name="mappings">
 			<props>
-				<prop key="/index.do">userAction </prop>  <!-- 映射URL访问 -->
+				<prop key="/index.do">userAction </prop>  映射URL访问
 			</props>
 		</property>
-	</bean>
-	
+	</bean> -->
+	<!-- <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" /> -->  
 	<bean name="userAction" class="com.shopping.web.action.UserAction" />
+	<!-- <bean name="goodAction" class="com.shopping.web.action.GoodsAction" /> -->
 	<!-- 自定义标签 -->
 	<!-- <bean id="app_content" class="com.wetuo.example.three.web.directive.ContentDirective"/> -->
 

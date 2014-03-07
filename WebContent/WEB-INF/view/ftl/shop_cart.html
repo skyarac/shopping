@@ -1,0 +1,208 @@
+[#include "include/header.html"]
+<div class="wrapper">
+  <div class="header_container"> 
+    <!--Header Starts-->
+    <header>
+      <div class="top_bar clear"> 
+        <!--Language Switcher Starts-->
+        <div class="language_switch"> <a class="active" href="#" title="ENGLISH">EN</a> <a href="#" title="FRENCH">FR</a> </div>
+        <!--Language Switcher Ends--> 
+        
+        <!--Top Links Starts-->
+        <ul class="top_links">
+          <li><a href="#">My Account</a></li>
+          <li><a href="#">Wishlist</a></li>
+          <li><a href="#">Login</a></li>
+          <li class="highlight"><a href="#">Sign Up</a></li>
+        </ul>
+        <!--Top Links Ends--> 
+      </div>
+      <!--Logo Starts-->
+      <h1 class="logo"> <a href="index.html"><img src="/shopping/common/default/images/logo.png" /></a> </h1>
+      <!--Logo Ends--> 
+            <!--Responsive NAV-->            <div class="responsive-nav" style="display:none;">
+                <select onchange="if(this.options[this.selectedIndex].value != ''){window.top.location.href=this.options[this.selectedIndex].value}">
+                    <option selected="" value="" />Navigate...
+                    <option value="index.html" /> Home
+                    <option value="good_list.html" /> -  Listing Page
+                    <option value="good_detail.html" />Product Page
+                    <option value="shop_cart.html" /> -  Shopping Cart
+                    <option value="buy.html" /> -  Checkout
+                    <option value="contact.html" />Contact
+                </select>
+            </div>
+            <!--Responsive NAV-->
+      
+      <!--Search Starts-->
+      <form class="header_search" />
+        <div class="form-search">
+          <input id="search" type="text" name="q" value="" class="input-text" autocomplete="off" placeholder="Search" />
+          <button type="submit" title="Search"></button>
+        </div>
+      </form>
+      <!--Search Ends--> 
+      
+    </header>
+    <!--Header Ends--> 
+  </div>
+  <div class="navigation_container"> 
+    <!--Navigation Starts-->
+    <nav>
+      <ul class="primary_nav">
+        <li><a href="good_list.html">Women</a> 
+          <!--SUbmenu Starts-->
+          <ul class="sub_menu">
+            <li> <a href="#">Dresses</a>
+              <ul>
+                <li><a href="#">Skirts</a></li>
+                <li><a href="#">Shorts</a></li>
+                <li><a href="#">Premium Pants</a></li>
+                <li><a href="#">Khakis</a></li>
+                <li><a href="#">Casual Pants</a></li>
+                <li><a href="#">Jeans</a></li>
+                <li><a href="#">Outerwear & Blazers</a></li>
+              </ul>
+            </li>
+            <li> <a href="#">Accessories</a>
+              <ul>
+                <li><a href="#">Sunglasses</a></li>
+                <li><a href="#">Scarves</a></li>
+                <li><a href="#">Hair Accessories</a></li>
+                <li><a href="#">Hats and Gloves</a></li>
+                <li><a href="#">Lifestyle</a></li>
+                <li><a href="#">Jeans</a></li>
+                <li><a href="#">Outerwear & Blazers</a></li>
+              </ul>
+            </li>
+          </ul>
+          <!--SUbmenu Ends--> 
+        </li>
+        <li><a href="good_list.html">Men</a> 
+          <!--SUbmenu Starts-->
+          <ul class="sub_menu">
+            <li> <a href="#">Men Summer Collection</a>
+              <ul>
+                <li><a href="#">Premium Pants</a></li>
+                <li><a href="#">Khakis</a></li>
+                <li><a href="#">Casual Pants</a></li>
+                <li><a href="#">Jeans</a></li>
+                <li><a href="#">Outerwear & Blazers</a></li>
+              </ul>
+            </li>
+            <li> <a href="#">Accessories</a>
+              <ul>
+                <li><a href="#">Sunglasses</a></li>
+                <li><a href="#">Scarves</a></li>
+                <li><a href="#">Hair Accessories</a></li>
+                <li><a href="#">Hats and Gloves</a></li>
+                <li><a href="#">Jeans</a></li>
+              </ul>
+            </li>
+          </ul>
+          <!--SUbmenu Ends--> 
+        </li>
+        <li><a href="good_list.html">Kids</a></li>
+        <li><a href="good_list.html">Fashion</a></li>
+        <li><a href="#">Accessories</a></li>
+      </ul>
+      <div class="minicart"> <a href="#" class="minicart_link"> <span class="item"><b>2</b> ITEM /</span> <span class="price"><b>$69.20</b></span> </a>
+        <div class="cart_drop"> <span class="darw"></span>
+          <ul>
+            <li><img src="/shopping/common/default/images/mini_c_item1.png" /><a href="#">Clogs Beach/Garden Clog</a> <span class="price">$49.90</span></li>
+            <li><img src="/shopping/common/default/images/mini_c_item2.png" /><a href="#">Faded chambray shorts</a> <span class="price">$12.90</span></li>
+            <div class="cart_bottom">
+              <div class="subtotal_menu"><small>Subtotal:</small><big>$69.20</big></div>
+              <a href="leisure_cart.html">Checkout</a></div>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!--Navigation Ends--> 
+  </div>
+  <div class="section_container"> 
+    <!--Mid Section Starts-->
+    <section> 
+      <!--CART STARTS-->
+      <div id="shopping_cart" class="full_page">
+        <h1>Shopping Cart</h1>
+        <div class="message success">Notch-collar shirt was added to your shopping cart.</div>
+        <div class="action_buttonbar">
+          <button type="button" title="" class="continue">Continue Shopping</button>
+          <button type="button" onclick="parent.location='leisure_checkout.html'" title="" class="checkout">Checkout</button>
+        </div>
+        <div class="cart_table">
+          <table class="data-table cart-table" id="shopping-cart-table" cellpadding="0" cellspacing="0">
+            <tr>
+              <th colspan="2">Products</th>
+              <th class="align_center" width="6%"></th>
+              <th class="align_center" width="12%">Unit Price</th>
+              <th class="align_center" width="10%">Qty</th>
+              <th class="align_center" width="12%">Subtotal</th>
+              <th class="align_center" width="6%"></th>
+            </tr>
+            <tr>
+              <td width="10%"><img src="/shopping/common/default/images/cart1.jpg" /></td>
+              <td class="align_left" width="44%"><a class="pr_name" href="#">Notch-collar shirt</a><span class="pr_info">Proin gravida </span></td>
+              <td class="align_center"><a href="#" class="edit">Edit</a></td>
+              <td class="align_center vline"><span class="price">$49.90</span></td>
+              <td class="align_center vline"><input class="qty_box" type="text" /></td>
+              <td class="align_center vline"><span class="price">$49.90</span></td>
+              <td class="align_center vline"><a href="#" class="remove"></a></td>
+            </tr>
+            <tr>
+              <td><img src="/shopping/common/default/images/cart2.jpg" /></td>
+              <td class="align_left" width="44%"><a class="pr_name" href="#">Notch-collar shirt</a><span class="pr_info">Proin gravida </span></td>
+              <td class="align_center"><a href="#" class="edit">Edit</a></td>
+              <td class="align_center vline"><span class="price">$49.90</span></td>
+              <td class="align_center vline"><input class="qty_box" type="text" /></td>
+              <td class="align_center vline"><span class="price">$49.90</span></td>
+              <td class="align_center vline"><a href="#" class="remove"></a></td>
+            </tr>
+          </table>
+          <div class="totals">
+            <table id="totals-table">
+                <tr>
+                  <td width="60%" colspan="1" class="align_left"><strong>Subtotal</strong></td>
+                  <td class="align_right" style=""><strong><span class="price">$109.00</span></strong></td>
+                </tr>
+                <tr>
+                  <td width="60%" colspan="1" class="align_left">Shipping cost</td>
+                  <td class="align_right" style=""><span class="price">$0.00</span></td>
+                </tr>
+                <tr>
+                  <td width="60%" colspan="1" class="align_left total">Grand Total</td>
+                  <td class="align_right" style=""><span class="total">$109.00</span></td>
+                </tr>                
+            </table>
+          </div>
+        </div>
+        <div class="action_buttonbar">
+          <button type="button" title="" class="continue">Continue Shopping</button>
+          <button type="button" onclick="parent.location='leisure_checkout.html'" title="" class="checkout">Checkout</button>
+        </div>
+      </div>
+      <!--CART ENDS--> 
+      
+      <div class="checkout_tax">
+      	<div class="shipping_tax">
+        	<h4>Estimate Shipping and Tax</h4>
+            <p>Enter your destination to get a shipping estimate.</p>
+            <label>Country</label><select><option />Canada</select><label>Postal code</label><input type="text" />
+            <br class="clear" />
+            <label>State</label><select><option />Vancouver</select>
+            <button type="button" title="" class="brown_btn">Get a Quote</button>
+        </div>
+        <div class="checkout_discount">
+        	<h4>Discount codes</h4>
+            <p>Enter your coupon code if you have one.</p>
+            <input type="text" />
+            <button type="button" title="" class="brown_btn">Apply Coupon</button>
+        </div>
+      </div>
+    </section>
+    <!--Mid Section Ends--> 
+  </div>
+  [#include "include/footer.html"]
+</div>
+</body>
+</html>

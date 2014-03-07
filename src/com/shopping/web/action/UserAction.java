@@ -1,20 +1,38 @@
 package com.shopping.web.action;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.mvc.Controller;
-
-public class UserAction implements Controller {
-
-	@Override
-	public ModelAndView handleRequest(HttpServletRequest request,
-			HttpServletResponse response) throws Exception {
-		
-		ModelAndView mv = new ModelAndView("index");
-		mv.addObject("title", " title ");
-		return mv;
+@Controller
+@RequestMapping("/index")
+public class UserAction {
+	@RequestMapping("/index.do")
+	public String index() {
+		return "index";
+	}
+	
+	@RequestMapping("/good_list.do")
+	public String goodList() {
+		return "good_list";
 	}
 
+	@RequestMapping("/good_detail.do")
+	public String goodDetail() {
+		return "good_detail";
+	}
+
+	@RequestMapping("/shop_cart.do")
+	public String shopCart() {
+		return "good_detail";
+	}
+
+	@RequestMapping("/contact.do")
+	public String Contact() {
+		return "contact";
+	}
+
+	@RequestMapping("/buy.do")
+	public String buy() {
+		return "buy";
+	}
 }
