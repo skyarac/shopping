@@ -1,4 +1,5 @@
 eclipse.preferences.version=1
+encoding//WebContent/WEB-INF/view/ftl/include/nav.html=UTF-8
 encoding//src/com/shopping/filter/UsersFilter.java=GBK
 encoding//src/com/shopping/servlet/PaySer.java=UTF-8
 encoding//src/com/shopping/util/ConextListener.java=GBK
