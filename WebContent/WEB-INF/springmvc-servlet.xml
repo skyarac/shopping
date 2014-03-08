@@ -61,7 +61,10 @@
 		</property>
 	</bean> -->
 	<!-- <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" /> -->  
+	
 	<bean name="userAction" class="com.shopping.web.action.UserAction" />
+	<bean name="adminAction" class="com.shopping.web.action.AdminAction"/>
+	
 	<!-- <bean name="goodAction" class="com.shopping.web.action.GoodsAction" /> -->
 	<!-- 自定义标签 -->
 	<!-- <bean id="app_content" class="com.wetuo.example.three.web.directive.ContentDirective"/> -->
