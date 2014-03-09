@@ -64,7 +64,7 @@
 	
 	
 	<!-- <bean name="adminAction" class="com.shopping.web.action.AdminAction"/> -->
-	<bean name="userAction" class="com.shopping.web.action.admin.UserAction" />
+	
 	<bean name="accountAction" class="com.shopping.web.action.admin.AccountAction"/>
 	<bean name="forderAction" class="com.shopping.web.action.admin.ForderAction"/>
 	<bean name="goodsAction" class="com.shopping.web.action.admin.GoodsAction"/>

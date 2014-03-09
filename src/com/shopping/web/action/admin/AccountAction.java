@@ -17,4 +17,14 @@ public class AccountAction {
 		return "account/account_modify";
 	}
 
+	@RequestMapping("/user_list.do")
+	public String userList() {
+		return "member/user_list";
+	}
+
+	@RequestMapping("/user_modify.do")
+	public String userModify() {
+		return "member/user_modify";
+	}
+
 }

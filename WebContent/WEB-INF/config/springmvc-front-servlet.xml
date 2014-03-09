@@ -64,6 +64,7 @@
 	
 	<!--front action -->
 	<bean name="welcomeAction" class="com.shopping.web.action.front.WelcomeAction"/>
+	<bean name="userAction" class="com.shopping.web.action.front.UserAction" />
 	
 	
 	
