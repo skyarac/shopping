@@ -24,16 +24,26 @@ import com.shopping.entity.Category;
 import com.shopping.entity.Forder;
 import com.shopping.entity.Goods;
 import com.shopping.entity.User;
+import com.shopping.service.AccountService;
+import com.shopping.service.CategoryService;
+import com.shopping.service.ForderService;
+import com.shopping.service.GoodsService;
+import com.shopping.service.UserService;
+import com.shopping.service.impl.AccountServiceImpl;
+import com.shopping.service.impl.CategoryServiceImpl;
+import com.shopping.service.impl.ForderServiceImpl;
+import com.shopping.service.impl.GoodsServiceImpl;
+import com.shopping.service.impl.UserServiceImpl;
 
 public class AccountServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-	AccountDao accountDao = new AccountDaoImpl();
-	UserDao usersDao = new UserDaoImpl();
-	ForderDao forderDao = new ForderDaoImpl();
-	CategoryDao categoryDao = new CategoryDaoImpl();
+	AccountService accountService = new AccountServiceImpl();
+	UserService usersService = new UserServiceImpl();
+	ForderService forderService = new ForderServiceImpl();
+	CategoryService categoryService = new CategoryServiceImpl();
 	Category category = null;
-	GoodsDao goodsDao = new GoodsDaoImpl();
+	GoodsService goodsService = new GoodsServiceImpl();
 
 	public void destroy() {
 
@@ -51,7 +61,7 @@ public class AccountServlet extends HttpServlet {
 			Account account = new Account();
 			account.setAlogin(request.getParameter("alogin"));
 			account.setApass(request.getParameter("apass"));
-			account = accountDao.get(request.getParameter("alogin"), request.getParameter("apass"));
+			account = accountService.login(request.getParameter("alogin"), request.getParameter("apass"));
 			if (account == null) { 
 				
 				request.setAttribute("error", "用户名或者密码错误!");
@@ -64,15 +74,15 @@ public class AccountServlet extends HttpServlet {
 		} else if (status.equals("usersManage")) {
 
 			List<User> users = new ArrayList<User>();
-			users = usersDao.listAll();
+			users = usersService.listAll();
 			request.getSession().setAttribute("users", users);
 
 			response.sendRedirect("/shopping/view/jsp/admin/users.jsp");
 		} else if (status.equals("deleteUser")) {
 			int uid = Integer.parseInt(request.getParameter("uid"));
-			usersDao.delete(uid);
+			usersService.deleteById(uid);
 			List<User> users = new ArrayList<User>();
-			users = usersDao.listAll();
+			users = usersService.listAll();
 			request.getSession().setAttribute("users", users);
 
 			response.sendRedirect("/shopping/view/jsp/admin/users.jsp");
@@ -88,29 +98,29 @@ public class AccountServlet extends HttpServlet {
 			user.setUphone(request.getParameter("uphone"));
 			user.setUpost(request.getParameter("upost"));
 			user.setUsex(request.getParameter("usex"));
-			usersDao.update(user);
+			usersService.modify(user);
 			List<User> users = new ArrayList<User>();
-			users = usersDao.listAll();
+			users = usersService.listAll();
 			request.getSession().setAttribute("users", users);
 			response.sendRedirect("/shopping/view/jsp/admin/users.jsp");
 
 		} else if (status.equals("forderManage")) {
 			List<Forder> forders = new ArrayList<Forder>();
-			forders = forderDao.listAll();
+			forders = forderService.listAll();
 			request.getSession().setAttribute("forders", forders);
 			response.sendRedirect("/shopping/view/jsp/admin/forder.jsp");
 
 		} else if (status.equals("forderModify")) {
 			int fid = Integer.parseInt(request.getParameter("fid"));
 			int sid = Integer.parseInt(request.getParameter("sid"));
-			forderDao.updateForderStatus(fid, sid);
+			forderService.updateForderStatus(fid, sid);
 			response.sendRedirect("/shopping/view/jsp/admin/forder.jsp");
 		} else if (status.equals("categoryAndGoodsInfo")) {
-			List<Category> categorys = categoryDao.listAll();
+			List<Category> categorys = categoryService.listAll();
 			request.getSession().setAttribute("categorys", categorys);
 			response.sendRedirect("/shopping/view/jsp/admin/category_goods_info.jsp");
 		} else if (status.equals("deleteCategory")) {
-			categoryDao.delete(Integer.parseInt(request.getParameter("cid")));
+			categoryService.delete(Integer.parseInt(request.getParameter("cid")));
 			response.sendRedirect("/shopping/AccountSer?status=categoryAndGoodsInfo");
 		} else if (status.equals("categoryModify")) {
 			category = new Category();
@@ -120,7 +130,7 @@ public class AccountServlet extends HttpServlet {
 			category.setChot(Boolean.parseBoolean(request.getParameter("chot")));
 			category.setCid(Integer.parseInt(request.getParameter("cid")));
 			category.setCtype(request.getParameter("ctype"));
-			categoryDao.update(category);
+			categoryService.update(category);
 			response.sendRedirect("/shopping/AccountSer?status=categoryAndGoodsInfo");
 		} else if (status.equals("addCategory")) {
 			category = new Category();
@@ -129,17 +139,17 @@ public class AccountServlet extends HttpServlet {
 			category.setAccount(account);
 			category.setChot(Boolean.parseBoolean(request.getParameter("chot")));
 			category.setCtype(request.getParameter("ctype"));
-			categoryDao.save(category);
+			categoryService.save(category);
 			response.sendRedirect("/shopping/AccountSer?status=categoryAndGoodsInfo");
 		} else if (status.equals("getGoodsInfo")) {
 			int cid = Integer.parseInt(request.getParameter("cid"));
-			List<Goods> goods = goodsDao.queryGoodsByCid(cid);
+			List<Goods> goods = goodsService.getGoodsByCid(cid);
 			request.getSession().setAttribute("goods", goods);
 			response.sendRedirect("/shopping/admin/goods.jsp");
 		} else if (status.equals("deleteGoods")) {
 			int gid = Integer.parseInt(request.getParameter("gid"));
 			int cid = Integer.parseInt(request.getParameter("cid"));
-			goodsDao.deleteByGid(gid);
+			goodsService.deleteByGid(gid);
 			response.sendRedirect("/shopping/AccountSer?status=getGoodsInfo&cid="
 					+ cid);
 		} else if (status.equals("goodsModify")) {
@@ -156,7 +166,7 @@ public class AccountServlet extends HttpServlet {
 			goods.setGpic(request.getParameter("gpic"));
 			goods.setGremark(request.getParameter("gremark"));
 			goods.setGxremark(request.getParameter("gxremark"));
-			goodsDao.goodsModify(goods);
+			goodsService.update(goods);
 			response.sendRedirect("/shopping/AccountSer?status=getGoodsInfo&cid="
 					+ Integer.parseInt(request.getParameter("cid")));
 		} else if (status.equals("addGoods")) {
@@ -173,7 +183,7 @@ public class AccountServlet extends HttpServlet {
 			goods.setGprice(Double.parseDouble(request.getParameter("gprice")));
 			goods.setGremark(request.getParameter("gremark"));
 			goods.setGxremark(request.getParameter("gxremark"));
-			goodsDao.save(goods);
+			goodsService.save(goods);
 			response.sendRedirect("/shopping/AccountSer?status=getGoodsInfo&cid="
 					+ Integer.parseInt(request.getParameter("cid")));
 
@@ -184,7 +194,7 @@ public class AccountServlet extends HttpServlet {
 			request.getSession().setAttribute("ctype", ctype);
 
 			// System.out.println(cid);
-			goodslist = goodsDao.queryGoodsByCid(cid);
+			goodslist = goodsService.getGoodsByCid(cid);
 			request.getSession().setAttribute("goodslist", goodslist);
 			response.sendRedirect("/shopping/goodslist.jsp");
 		} else if (status.equals("alogout")) {

@@ -68,7 +68,7 @@ public class GoodsDaoImpl implements GoodsDao {
 
 	}
 
-	public void goodsModify(Goods goods) {
+	public void update(Goods goods) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = "UPDATE goods SET cid=?,gname=?,gprice=?,gpic=?,gremark=?,gxremark=?,giscommend=?,gisopen=? WHERE gid=?";
@@ -102,7 +102,7 @@ public class GoodsDaoImpl implements GoodsDao {
 
 	}
 
-	public List<Goods> queryGiscommendGoods(int cid) {
+	public List<Goods> getGiscommendGoods(int cid) {
 		List<Goods> goods = new ArrayList<Goods>();
 		Goods temp = null;
 		Connection conn = null;
@@ -151,7 +151,7 @@ public class GoodsDaoImpl implements GoodsDao {
 		return goods;
 	}
 
-	public List<Goods> queryGoodsByCid(int cid) {
+	public List<Goods> getGoodsByCid(int cid) {
 		List<Goods> goods = new ArrayList<Goods>();
 		Goods temp = null;
 		Connection conn = null;

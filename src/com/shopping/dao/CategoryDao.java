@@ -44,4 +44,11 @@ public interface CategoryDao {
 	 */
 	public void update(Category category);
 
+	/**
+	 * @param cid
+	 * @return
+	 * 根据类别信息返回类别信息
+	 */
+	public Category get(int cid);
+
 }

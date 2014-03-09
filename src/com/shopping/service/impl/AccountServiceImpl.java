@@ -7,10 +7,11 @@ import com.shopping.service.AccountService;
 
 public class AccountServiceImpl implements AccountService {
 	private AccountDao accountDao = new AccountDaoImpl();
+
 	@Override
 	public Account login(String username, String password) {
-		// TODO Auto-generated method stub
-		return null;
+		Account account = accountDao.get(username, password);
+		return account;
 	}
-	
+
 }

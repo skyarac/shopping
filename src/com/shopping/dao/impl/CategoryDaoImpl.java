@@ -215,4 +215,43 @@ public class CategoryDaoImpl implements CategoryDao {
 			JDBCUtil.closeConnection();
 		}
 	}
+
+	@Override
+	public Category get(int cid) {
+		Category category=null;
+		Connection conn=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		conn=JDBCUtil.getConnection();
+		String sql="SELECT * FROM category where cid = ?";
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, cid);
+			rs=pstmt.executeQuery();
+			while(rs.next()){
+				category=new Category();
+				Account account=new Account();
+				account.setAid(rs.getString("aid"));
+				category.setAccount(account);
+				category.setChot(rs.getBoolean("chot"));
+				category.setCid(rs.getInt("cid"));
+				category.setCtype(rs.getString("ctype"));
+			}
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}finally{
+			
+			try {
+				rs.close();
+				pstmt.close();
+			} catch (Exception e) {
+				
+				e.printStackTrace();
+			}
+			JDBCUtil.closeConnection();
+		}
+		
+		return category;
+	}
 }

@@ -20,7 +20,7 @@ public class AdminFilter implements Filter{
 			FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest req=(HttpServletRequest)request;
 		if(req.getSession().getAttribute("account")==null){
-			request.setAttribute("error", "非法进入");
+			request.setAttribute("error", "闈炴硶鐧诲綍!");
 			request.getRequestDispatcher("/alogin.jsp").forward(request, response);
 		}else{
 			chain.doFilter(request, response);

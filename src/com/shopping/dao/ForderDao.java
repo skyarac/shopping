@@ -26,6 +26,11 @@ public interface ForderDao {
 	 */
 	public List<Forder> listAll();
 
+	/**
+	 * @param id
+	 * @return
+	 * 根据订单状态返回订单集合
+	 */
 	public List<Forder> listByStatusId(int id);
 
 }

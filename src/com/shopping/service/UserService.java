@@ -43,4 +43,9 @@ public interface UserService {
 	 * 根据用户id获取用户信息
 	 */
 	public User getUserById(int uid);
+	/**
+	 * @param uid
+	 * 根据id删除用户
+	 */
+	public void deleteById(int uid);
 }

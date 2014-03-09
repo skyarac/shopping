@@ -1,22 +1,23 @@
 package com.shopping.util;
 
-import com.shopping.dao.CategoryDao;
-import com.shopping.dao.GoodsDao;
-import com.shopping.dao.impl.CategoryDaoImpl;
-import com.shopping.dao.impl.GoodsDaoImpl;
 import com.shopping.entity.Category;
 import com.shopping.entity.Goods;
+import com.shopping.service.CategoryService;
+import com.shopping.service.GoodsService;
+import com.shopping.service.impl.CategoryServiceImpl;
+import com.shopping.service.impl.GoodsServiceImpl;
 
 import javax.servlet.ServletContext;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.TimerTask;
 
 public class ShoppingTimerTask extends TimerTask {
 
-	private CategoryDao categoryDaoImpl = new CategoryDaoImpl();
+	private CategoryService categoryService = new CategoryServiceImpl();
 
-	private GoodsDao goodsDaoImpl = new GoodsDaoImpl();
+	private GoodsService goodsService = new GoodsServiceImpl();
 
 	private ServletContext application = null;
 
@@ -24,8 +25,8 @@ public class ShoppingTimerTask extends TimerTask {
 	public void run() {
 		List<List<Goods>> bigList = new ArrayList<List<Goods>>();
 
-		for (Category category : categoryDaoImpl.listByChot(true)) {
-			List<Goods> goodss = goodsDaoImpl.queryGiscommendGoods(category
+		for (Category category : categoryService.listByChot(true)) {
+			List<Goods> goodss = goodsService.getGiscommendGoods(category
 					.getCid());
 
 			bigList.add(goodss);

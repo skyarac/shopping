@@ -5,30 +5,45 @@ import java.util.List;
 import com.shopping.entity.Goods;
 
 public interface GoodsDao {
-	/*
-	 * 添加商品信息
-	 * */
+	
+	/**
+	 * @param goods
+	 * 淇濆瓨鍟嗗搧
+	 * 
+	 */
 	public void save(Goods goods);
-	/*
-	 * 根据商品编号gid删除商品信息
-	 * */
+
+	/**
+	 * @param gid
+	 * 鏍规嵁鍟嗗搧缂栧彿鍒犻櫎鍟嗗搧
+	 */
 	public void deleteByGid(int gid);
-	/*
-	 * 根据类别编号删除商品信息
-	 * */
+
+	/**
+	 * @param cid
+	 * 鏍规嵁绫诲埆缂栧彿鍒犻櫎鍟嗗搧
+	 */
 	public void deleteByCid(int cid);
-	/*
-	 * 根据类别编号查询并返回商品信息
-	 * */
-	public void goodsModify(Goods goods);
-	/*
-	 * 根据类别号查询热点，推荐，有效商品
-	 * */
-	public List<Goods> queryGiscommendGoods(int cid);
-	/*
-	 * 根据商品类别编号cid查询商品信息
-	 * */
-	public List<Goods> queryGoodsByCid(int cid);
+
+	/**
+	 * @param goods
+	 * 鏇存柊鍟嗗搧
+	 */
+	public void update(Goods goods);
+
+	/**
+	 * @param cid
+	 * @return
+	 * 鏌ヨ骞惰繑鍥炵儹鐐瑰苟鎺ㄨ崘鍟嗗搧
+	 */
+	public List<Goods> getGiscommendGoods(int cid);
+
+	/**
+	 * @param cid
+	 * @return
+	 * 鏍规嵁绫诲埆缂栧彿杩斿洖鍟嗗搧
+	 */
+	public List<Goods> getGoodsByCid(int cid);
 	
 	
 
