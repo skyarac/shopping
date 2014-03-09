@@ -62,8 +62,16 @@
 	</bean> -->
 	<!-- <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" /> -->  
 	
+	<!--front action -->
+	<bean name="welcomeAction" class="com.shopping.web.action.WelcomeAction"/>
+	
+	<!-- back action -->
+	<!-- <bean name="adminAction" class="com.shopping.web.action.AdminAction"/> -->
 	<bean name="userAction" class="com.shopping.web.action.UserAction" />
-	<bean name="adminAction" class="com.shopping.web.action.AdminAction"/>
+	<bean name="accountAction" class="com.shopping.web.action.AccountAction"/>
+	<bean name="forderAction" class="com.shopping.web.action.ForderAction"/>
+	<bean name="goodsAction" class="com.shopping.web.action.GoodsAction"/>
+	
 	
 	<!-- <bean name="goodAction" class="com.shopping.web.action.GoodsAction" /> -->
 	<!-- 自定义标签 -->

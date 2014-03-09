@@ -1,0 +1,70 @@
+[#include "../include/header.html"] 
+[#include "../include/nav.html"]
+<div class="container">
+	<div class="row">
+		<div class="col-xs-2">
+		[#include "../include/left.html"]
+		</div>
+		<div class="col-xs-2"></div>
+		<div class="col-xs-5">
+			<form class="form-horizontal" action="user_list.do" role="form">
+				<div class="form-group">
+				    <label  class="col-sm-2 control-label">登录名</label>
+				    <div class="col-sm-6">
+				      <input  class="form-control" name="username" placeholder="username">
+				    </div>
+				</div>
+				<div class="form-group">
+				    <label for="inputPassword3" class="col-sm-2 control-label">密码</label>
+				    <div class="col-sm-6">
+				      <input type="password" class="form-control" name="password" id="inputPassword3" placeholder="password">
+				    </div>
+				</div>
+				<div class="form-group">
+				    <label  class="col-sm-2 control-label">姓名</label>
+				    <div class="col-sm-6">
+				      <input  class="form-control" name="realname" placeholder="realname">
+				    </div>
+				</div>
+				<div class="form-group">
+				    <label  class="col-sm-2 control-label">性别</label>
+				    <div class="col-sm-6">
+				      <input  class="form-control" name="gender" placeholder="gender">
+				    </div>
+				</div>
+				<div class="form-group">
+				    <label  class="col-sm-2 control-label">电话</label>
+				    <div class="col-sm-6">
+				      <input  class="form-control" name="phone" placeholder="phone">
+				    </div>
+				</div>
+				<div class="form-group">
+				    <label  class="col-sm-2 control-label">邮编</label>
+				    <div class="col-sm-6">
+				      <input  class="form-control" name="postcode" placeholder="postcode">
+				    </div>
+				</div>
+				<div class="form-group">
+				    <label  class="col-sm-2 control-label">邮箱</label>
+				    <div class="col-sm-6">
+				      <input  class="form-control" name="email" placeholder="email">
+				    </div>
+				</div>
+				<div class="form-group">
+				    <label  class="col-sm-2 control-label">地址</label>
+				    <div class="col-sm-6">
+				      <input  class="form-control" name="address" placeholder="address">
+				    </div>
+				</div>
+				<div class="form-group">
+				    <div class="col-sm-offset-2 col-sm-10">
+				      <button type="submit" class="btn btn-default">修改</button>
+				    </div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+[#include "../include/footer.html"]
+
+

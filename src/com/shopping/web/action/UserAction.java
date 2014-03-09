@@ -4,35 +4,27 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/index")
+@RequestMapping("/user")
 public class UserAction {
-	@RequestMapping("/index.do")
-	public String index() {
-		return "front/index";
-	}
-	
-	@RequestMapping("/good_list.do")
-	public String goodList() {
-		return "front/good_list";
+
+	@RequestMapping("/user_info.do")
+	public String userInfo() {
+		return "front/user_info";
 	}
 
-	@RequestMapping("/good_detail.do")
-	public String goodDetail() {
-		return "front/good_detail";
+	@RequestMapping("/user_update.do")
+	public String userUpdate() {
+		return "front/user_update";
 	}
 
-	@RequestMapping("/shop_cart.do")
-	public String shopCart() {
-		return "front/good_detail";
+	@RequestMapping("/user_list.do")
+	public String userList() {
+		return "admin/member/user_list";
 	}
 
-	@RequestMapping("/contact.do")
-	public String Contact() {
-		return "front/contact";
+	@RequestMapping("/user_modify.do")
+	public String userModify() {
+		return "admin/member/user_modify";
 	}
 
-	@RequestMapping("/buy.do")
-	public String buy() {
-		return "front/buy";
-	}
 }
