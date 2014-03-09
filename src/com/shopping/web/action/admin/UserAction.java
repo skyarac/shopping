@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/user")
 public class UserAction {
 
-	@RequestMapping("/user_info.do")
+	/*@RequestMapping("/user_info.do")
 	public String userInfo() {
 		return "front/user_info";
 	}
@@ -15,16 +15,16 @@ public class UserAction {
 	@RequestMapping("/user_update.do")
 	public String userUpdate() {
 		return "front/user_update";
-	}
+	}*/
 
 	@RequestMapping("/user_list.do")
 	public String userList() {
-		return "admin/member/user_list";
+		return "member/user_list";
 	}
 
 	@RequestMapping("/user_modify.do")
 	public String userModify() {
-		return "admin/member/user_modify";
+		return "member/user_modify";
 	}
 
 }

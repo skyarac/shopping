@@ -9,12 +9,12 @@ public class AdminAction {
 	
 	@RequestMapping("/index.do")
 	public String index() {
-		return "admin/index";
+		return "index";
 	}
 	
 	@RequestMapping("/login.do")
 	public String login() {
-		return "admin/login";
+		return "login";
 	}
 	
 }
