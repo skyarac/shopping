@@ -39,32 +39,35 @@
 				<prop key="url_escaping_charset">UTF-8</prop>
 			</props>
 		</property>
-		<!-- <property name="freemarkerVariables">
-			<map>
-				<entry key="app_content" value-ref="app_content"/>
-			</map>
-		</property> -->
 	</bean>
-
+	<!-- 映射处理器 -->
+	<bean id="urlHandlerMapping" class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
+		<property name="interceptors">
+			<list>
+				<ref bean="adminContextInterceptor"/>
+			</list>
+		</property>
+	</bean>
+	<!-- 视图解析器 -->
 	<bean id="adminViewResolver"
 		class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
 		<property name="suffix" value=".html" />
 		<property name="contentType" value="text/html;charset=UTF-8"/> 
 	</bean>
-	
-	
-	<!-- <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
-		<property name="mappings">
-			<props>
-				<prop key="/index.do">userAction </prop>  映射URL访问
-			</props>
+	<!-- 拦截器 -->
+	<bean name="adminContextInterceptor" class="com.shopping.web.interceptor.AdminContextInterceptor">
+		<property name="loginUrl" value="/admin/account/login.do"/>
+		<property name="returnUrl" value="/admin/account/index.do"/>
+		<!-- 防止死循环 -->
+		<property name="excludeUrls">
+			<list>
+				<value>/login.do</value>
+				<value>/logout.do</value>
+			</list>
 		</property>
-	</bean> -->
-	<!-- <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" /> -->  
+	</bean>
 	
-	
-	<!-- <bean name="adminAction" class="com.shopping.web.action.AdminAction"/> -->
-	
+	<!-- Action -->
 	<bean name="accountAction" class="com.shopping.web.action.admin.AccountAction"/>
 	<bean name="forderAction" class="com.shopping.web.action.admin.ForderAction"/>
 	<bean name="goodsAction" class="com.shopping.web.action.admin.GoodsAction"/>
