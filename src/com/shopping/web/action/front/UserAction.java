@@ -16,7 +16,25 @@ public class UserAction {
 	public String userUpdate() {
 		return "front/user_update";
 	}
-
 	
+	@RequestMapping("/register.do")
+	public String userRegister() {
+		return "front/user_register";
+	}
+	
+	@RequestMapping("/user_login.do")
+	public String userLogin() {
+		return "front/user_login";
+	}
+	
+	@RequestMapping("/shop_cart.do")
+	public String shopCart() {
+		return "shop_cart";
+	}
+	
+	@RequestMapping("/contact.do")
+	public String contact() {
+		return "contact";
+	}
 
 }

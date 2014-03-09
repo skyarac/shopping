@@ -11,15 +11,9 @@ public class WelcomeAction {
 		return "index";
 	}
 
-	@RequestMapping("/contact.do")
-	public String contact() {
-		return "contact";
-	}
+	
 
-	@RequestMapping("/shop_cart.do")
-	public String shopCart() {
-		return "shop_cart";
-	}
+	
 
 	@RequestMapping("/goods_list.do")
 	public String goodsList() {
