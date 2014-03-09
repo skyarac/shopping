@@ -10,4 +10,13 @@ public class AdminAction {
 	public String index() {
 		return "admin/index";
 	}
+	
+	@RequestMapping("/login.do")
+	public String login() {
+		return "admin/login";
+	}
+	@RequestMapping("/user_list.do")
+	public String userList() {
+		return "admin/user_list";
+	}
 }

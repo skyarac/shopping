@@ -1,7 +1,11 @@
 eclipse.preferences.version=1
 encoding//WebContent/WEB-INF/view/ftl/admin/include/header.html=UTF-8
+encoding//WebContent/WEB-INF/view/ftl/admin/include/left.html=UTF-8
 encoding//WebContent/WEB-INF/view/ftl/admin/include/nav.html=UTF-8
 encoding//WebContent/WEB-INF/view/ftl/admin/index.html=UTF-8
+encoding//WebContent/WEB-INF/view/ftl/admin/login.html=UTF-8
+encoding//WebContent/WEB-INF/view/ftl/admin/user_list.html=UTF-8
+encoding//WebContent/WEB-INF/view/ftl/admin/user_modify.html=UTF-8
 encoding//WebContent/WEB-INF/view/ftl/front/buy.html=UTF-8
 encoding//WebContent/WEB-INF/view/ftl/front/contact.html=UTF-8
 encoding//WebContent/WEB-INF/view/ftl/front/good_detail.html=UTF-8
