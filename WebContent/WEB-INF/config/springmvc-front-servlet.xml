@@ -17,7 +17,7 @@
 						http://www.springframework.org/schema/tx/spring-tx-3.0.xsd ">
 						
 	<context:annotation-config />  
-	<context:component-scan base-package="com.shopping.web.action"/>
+	<context:component-scan base-package="com.shopping.web.action.front"/>
 	
 	<!-- Freemarker配置 -->
 	<bean id="freemarkerConfig"
@@ -46,10 +46,10 @@
 		</property> -->
 	</bean>
 
-	<bean id="viewResolver"
-		class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+	<bean id="frontViewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
 		<property name="suffix" value=".html" />
 		<property name="contentType" value="text/html;charset=UTF-8"/> 
+		
 	</bean>
 	
 	
@@ -63,14 +63,8 @@
 	<!-- <bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter" /> -->  
 	
 	<!--front action -->
-	<bean name="welcomeAction" class="com.shopping.web.action.WelcomeAction"/>
+	<bean name="welcomeAction" class="com.shopping.web.action.front.WelcomeAction"/>
 	
-	<!-- back action -->
-	<!-- <bean name="adminAction" class="com.shopping.web.action.AdminAction"/> -->
-	<bean name="userAction" class="com.shopping.web.action.UserAction" />
-	<bean name="accountAction" class="com.shopping.web.action.AccountAction"/>
-	<bean name="forderAction" class="com.shopping.web.action.ForderAction"/>
-	<bean name="goodsAction" class="com.shopping.web.action.GoodsAction"/>
 	
 	
 	<!-- <bean name="goodAction" class="com.shopping.web.action.GoodsAction" /> -->
