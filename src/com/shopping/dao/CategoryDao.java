@@ -5,29 +5,43 @@ import java.util.List;
 import com.shopping.entity.Category;
 
 public interface CategoryDao {
-	/*
-	 * Ìí¼ÓÉÌÆ·Àà±ğĞÅÏ¢
-	 * */
+	
+	/**
+	 * @param category
+	 * ä¿å­˜ç±»åˆ«ä¿¡æ¯
+	 */
 	public void save(Category category);
-	/*
-	 * °´Àà±ğcidÉ¾³ıÉÌÆ·Àà±ğĞÅÏ¢
-	 * */
+	
+	/**
+	 * @param cid
+	 * æ ¹æ®cidåˆ é™¤ç±»åˆ«
+	 */
 	public void delete(int cid);
-	/*
-	 * ·µ»ØËùÓĞÀà±ğĞÅÏ¢
-	 * */
-	public List<Category> getCategorys();
-	/*
-	 * ¸ù¾İÀà±ğÃû»ò×Ö·û·µ»ØÀà±ğĞÅÏ¢
-	 * */
-	public List<Category> getCategorys(String ctype);
-	/*
-	 * ¸ù¾İchot·µ»ØÈÈµãÀà±ğ
-	 * */
-	public List<Category> getCategorys(boolean isChot);
-	/*
-	 * ¸ù¾İĞÂµÄÀà±ğĞÅÏ¢categoryĞŞ¸ÄÀà±ğĞÅÏ¢
-	 * */
-	public void categoryModify(Category category);
+	
+	/**
+	 * @return
+	 * è¿”å›æ‰€æœ‰ç±»åˆ«ä¿¡æ¯
+	 */
+	public List<Category> listAll();
+	
+	/**
+	 * @param ctype
+	 * @return
+	 * æ ¹æ®ç±»åˆ«åæ¨¡ç³ŠæŸ¥è¯¢å¹¶è¿”å›ç±»åˆ«ä¿¡æ¯
+	 */
+	public List<Category> listByCtype(String ctype);
+	
+	/**
+	 * @param isChot
+	 * @return
+	 * æ ¹æ®æ˜¯å¦çƒ­ç‚¹æŸ¥è¯¢å¹¶è¿”å›ç±»åˆ«ä¿¡æ¯
+	 */
+	public List<Category> listByChot(boolean isChot);
+	
+	/**
+	 * @param category
+	 * ä¿®æ”¹ç±»åˆ«ä¿¡æ¯
+	 */
+	public void update(Category category);
 
 }

@@ -3,7 +3,6 @@ package com.shopping.dao.impl;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,18 +13,17 @@ import com.shopping.entity.Forder;
 import com.shopping.entity.Sorder;
 import com.shopping.entity.Status;
 import com.shopping.entity.User;
-import com.shopping.util.DataBaseConnection;
+import com.shopping.util.JDBCUtil;
 
 public class ForderDaoImpl implements ForderDao {
 	private SorderDao sorderDao=new SorderDaoImpl();
 
-	public Forder saveForder(Forder forder) {
+	public Forder save(Forder forder) {
 		int fid=0;
 	    Connection conn=null;
 	    PreparedStatement pstmt=null;
 	    ResultSet rs=null;
-	    DataBaseConnection dbc=new DataBaseConnection();
-	    conn=dbc.getConnection();
+	    conn=JDBCUtil.getConnection();
 	    String sql="INSERT INTO forder(fid,fdate,ftotal,fname,fphone,fremark,femail,fpost,faddress,aid,uid,sid)VALUES(null,null,?,?,?,?,?,?,?,?,?,?)";
 	    try {
 	    	conn.setAutoCommit(false);
@@ -62,7 +60,7 @@ public class ForderDaoImpl implements ForderDao {
 				
 				e.printStackTrace();
 			}
-			dbc.close();
+			JDBCUtil.closeConnection();
 		}
 	   
 	    
@@ -72,9 +70,8 @@ public class ForderDaoImpl implements ForderDao {
 	public void updateForderStatus(int fid, int sid) {
 		Connection conn=null;
 		PreparedStatement pstmt=null;
-		DataBaseConnection dbc=new DataBaseConnection();
 		String sql="UPDATE forder SET sid=? WHERE fid=?";
-		conn=dbc.getConnection();
+		conn=JDBCUtil.getConnection();
 		try {
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setInt(1,sid);
@@ -90,73 +87,22 @@ public class ForderDaoImpl implements ForderDao {
 				
 				e.printStackTrace();
 			}
-			dbc.close();
+			JDBCUtil.closeConnection();
 		}
 		
 		
 	}
 
-	public Forder addSorder(Forder forder, Sorder sorder) {
-		List<Sorder> sorders = forder.getSorders();
-		int i = 0;
-		/*判断订单中是否有重复的商品(订单子项)*/
-		for (; i < sorders.size(); i++) {
-			if (sorders.get(i).getGoods().getGid() == sorder.getGoods().getGid()){
-				break;
-			}
-		}
-		if (i < sorders.size())
-			sorders.get(i).setSnumber(sorders.get(i).getSnumber() + 1);
-		else
-			sorders.add(sorder);
-		forder.setSorders(sorders);
-		// 从新计算购物总价
-		forder.setFtotal(this.cluTotal(forder));
-		return forder;
-	}
 
-	public Forder updateSorder(Forder forder, int gid, int snumber) {
-		for(Sorder temp:forder.getSorders()){
-			if(temp.getGoods().getGid()==gid){
-				temp.setSnumber(snumber);
-			}
-		}
-		forder.setFtotal(this.cluTotal(forder));
-		return forder;
-	}
 
-	public double cluTotal(Forder forder) {
-		double total = 0.0;
-		for (Sorder sorder : forder.getSorders()) {
-			total += sorder.getSnumber() * sorder.getSprice();
-		}
-		return total;
-	}
-
-	public Forder deleteSorder(Forder forder, int gid) {
-		List<Sorder> sorders = forder.getSorders();
-		for (int i = 0; i < sorders.size(); i++) {
-			if (sorders.get(i).getGoods().getGid() == gid) {
-				sorders.remove(i);
-				break;
-			}
-		}
-		// 删除后的购物项集合放入到购物车中
-		forder.setSorders(sorders);
-		// 从新计算购物总价
-		forder.setFtotal(this.cluTotal(forder));
-		return forder;
-	}
-
-	public List<Forder> getForders() {
+	public List<Forder> listAll() {
 		List<Forder> forders=new ArrayList<Forder>();
 		Forder forder=null;
 		Connection conn=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
-		DataBaseConnection dbc=new DataBaseConnection();
 		String sql="SELECT * FROM forder";
-		conn=dbc.getConnection();
+		conn=JDBCUtil.getConnection();
 		try {
 			pstmt=conn.prepareStatement(sql);
 			rs=pstmt.executeQuery();
@@ -189,7 +135,60 @@ public class ForderDaoImpl implements ForderDao {
 			try {
 				rs.close();
 				pstmt.close();
-				dbc.close();
+				JDBCUtil.closeConnection();
+			} catch (Exception e) {
+				
+				e.printStackTrace();
+			}
+			
+		}
+		
+		return forders;
+	}
+
+	@Override
+	public List<Forder> listByStatusId(int id) {
+		List<Forder> forders=new ArrayList<Forder>();
+		Forder forder=null;
+		Connection conn=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String sql="SELECT * FROM forder where sid= ?";
+		conn=JDBCUtil.getConnection();
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, id);
+			rs=pstmt.executeQuery();
+			while(rs.next()){
+				forder=new Forder();
+				Account account=new Account();
+				account.setAid(rs.getString("aid"));
+				forder.setAccount(account);
+				forder.setFaddress(rs.getString("faddress"));
+				forder.setFdate(rs.getDate("fdate"));
+				forder.setFemail(rs.getString("femail"));
+				forder.setFid(rs.getInt("fid"));
+				forder.setFname(rs.getString("fname"));
+				forder.setFphone(rs.getString("fphone"));
+				forder.setFpost(rs.getString("fpost"));
+				forder.setFremark(rs.getString("fremark"));
+				forder.setFtotal(rs.getDouble("ftotal"));
+				Status status=new Status();
+				status.setSid(rs.getInt("sid"));
+				forder.setStatus(status);
+				User users=new User();
+				users.setUid(rs.getInt("uid"));
+				forder.setUsers(users);
+				forders.add(forder);
+			}
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				rs.close();
+				pstmt.close();
+				JDBCUtil.closeConnection();
 			} catch (Exception e) {
 				
 				e.printStackTrace();

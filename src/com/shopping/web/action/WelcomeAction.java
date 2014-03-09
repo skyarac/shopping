@@ -2,6 +2,7 @@ package com.shopping.web.action;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 @Controller
 @RequestMapping("/index")
 public class WelcomeAction {
@@ -15,14 +16,22 @@ public class WelcomeAction {
 		return "front/contact";
 	}
 
-	@RequestMapping("/buy.do")
-	public String buy() {
-		return "front/buy";
-	}
-
 	@RequestMapping("/shop_cart.do")
 	public String shopCart() {
 		return "front/shop_cart";
 	}
-	
+
+	@RequestMapping("/goods_list.do")
+	public String goodsList() {
+		return "front/goods_list";
+	}
+
+	public String goodsDetail() {
+		return "front/goods_detail";
+	}
+
+	@RequestMapping("/buy.do")
+	public String buy() {
+		return "front/buy";
+	}
 }

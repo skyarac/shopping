@@ -7,19 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.shopping.dao.ForderDao;
-import com.shopping.dao.impl.ForderDaoImpl;
 import com.shopping.entity.Account;
 import com.shopping.entity.Forder;
 import com.shopping.entity.Goods;
 import com.shopping.entity.Sorder;
 import com.shopping.entity.Status;
 import com.shopping.entity.User;
+import com.shopping.service.ForderService;
+import com.shopping.service.impl.ForderServiceImpl;
 
 public class ForderServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-	private ForderDao forderDaoImpl = new ForderDaoImpl();
+	private ForderService forderService = new ForderServiceImpl();
 
 	public void init() throws ServletException {
 		super.init();
@@ -48,7 +48,7 @@ public class ForderServlet extends HttpServlet {
 			goods.setGid(Integer.parseInt(request.getParameter("gid")));
 			sorder.setGoods(goods);
 			request.getSession().setAttribute("forder",
-					forderDaoImpl.addSorder(forder, sorder));
+					forderService.addSorder(forder, sorder));
 			response.sendRedirect("/shopping/view/jsp/member/showCar.jsp");
 		} else if (status.equals("deleteForder")) {
 			request.getSession().setAttribute("forder", new Forder());
@@ -67,18 +67,15 @@ public class ForderServlet extends HttpServlet {
 			forder.setStatus(new Status(1));
 			forder.setUsers((User) request.getSession().getAttribute("users"));
 			request.getSession().setAttribute("forder",
-					forderDaoImpl.saveForder(forder));
+					forderService.save(forder));
 			response.sendRedirect("/shopping/view/jsp/member/chooseBank.jsp");
 		} else if (status.equals("updateSorder")) {
 			int gid = Integer.parseInt(request.getParameter("gid"));
 			int snumber = Integer.parseInt(request.getParameter("snumber"));
-			// 更新购物车某个商品的数量,然后修改总价,并返回
 			Forder forder = (Forder) request.getSession()
 					.getAttribute("forder");
-			forder = forderDaoImpl.updateSorder(forder, gid, snumber);
+			forder = forderService.updateSorder(forder, gid, snumber);
 
-			// System.out.println(forder.getSorders().get(0).getSnumber());
-			// System.out.println("总价 "+forder.getFtotal());
 			request.getSession().setAttribute("forder", forder);
 			response.getWriter().write(forder.getFtotal() + "");
 		} else if (status.equals("deleteSorder")) {
@@ -86,7 +83,7 @@ public class ForderServlet extends HttpServlet {
 			Forder forder = (Forder) request.getSession()
 					.getAttribute("forder");
 			request.getSession().setAttribute("forder",
-					forderDaoImpl.deleteSorder(forder, gid));
+					forderService.deleteSorder(forder, gid));
 			response.sendRedirect("/shopping/view/jsp/member/showCar.jsp");
 		}
 	}

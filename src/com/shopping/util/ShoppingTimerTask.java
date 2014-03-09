@@ -24,7 +24,7 @@ public class ShoppingTimerTask extends TimerTask {
 	public void run() {
 		List<List<Goods>> bigList = new ArrayList<List<Goods>>();
 
-		for (Category category : categoryDaoImpl.getCategorys(true)) {
+		for (Category category : categoryDaoImpl.listByChot(true)) {
 			List<Goods> goodss = goodsDaoImpl.queryGiscommendGoods(category
 					.getCid());
 

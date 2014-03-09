@@ -3,36 +3,29 @@ package com.shopping.dao;
 import java.util.List;
 
 import com.shopping.entity.Forder;
-import com.shopping.entity.Sorder;
 
 public interface ForderDao {
-	/*
-	 * ±£´æ¶©µ¥
-	 * */
-	public Forder saveForder(Forder forder);
-	/*
-	 * ¸üĞÂ¶©µ¥×´Ì¬
-	 * */
+	
+	/**
+	 * @param forder
+	 * @return
+	 * ä¿å­˜ä½è®¢å•
+	 */
+	public Forder save(Forder forder);
+	
+	/**
+	 * @param fid
+	 * @param sid
+	 * æ ¹æ®ä¸»è®¢å•å·å’ŒçŠ¶æ€ç¼–å·æ›´æ–°ä½è®¢å•çš„çŠ¶æ€
+	 */
 	public void updateForderStatus(int fid,int sid);
-	/*
-	 * ´«ÈëÖ÷¶©µ¥ºÍ×Ó¶©µ¥½øĞĞÌí¼Ó×Ó¶©µ¥Ïî
-	 * */
-    public Forder addSorder(Forder forder,Sorder sorder);
-	/*
-	 * ´«ÈëÖ÷¶©µ¥,ÉÌÆ·±àºÅºÍÊıÁ¿¸üĞÂ×Ó¶©µ¥Ïî
-	 * */
-	public Forder updateSorder(Forder forder,int gid,int snumber);
-	/*
-	 * ¼ÆËã¶©µ¥×Ü¼Û
-	 * */
-	public double cluTotal(Forder forder);
-	/*
-	 * É¾³ı×Ó¶©µ¥Ïî
-	 * */
-	public Forder deleteSorder(Forder forder,int gid);
-	/*
-	 * ·µ»ØËùÓĞ¶©µ¥ĞÅÏ¢
-	 * */
-	public List<Forder> getForders();
+	
+	/**
+	 * @return
+	 * åˆ—å‡ºæ‰€æœ‰è®¢å•ä¿¡æ¯
+	 */
+	public List<Forder> listAll();
+
+	public List<Forder> listByStatusId(int id);
 
 }

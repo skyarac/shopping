@@ -13,12 +13,12 @@ import com.shopping.dao.AccountDao;
 import com.shopping.dao.CategoryDao;
 import com.shopping.dao.ForderDao;
 import com.shopping.dao.GoodsDao;
-import com.shopping.dao.UsersDao;
+import com.shopping.dao.UserDao;
 import com.shopping.dao.impl.AccountDaoImpl;
 import com.shopping.dao.impl.CategoryDaoImpl;
 import com.shopping.dao.impl.ForderDaoImpl;
 import com.shopping.dao.impl.GoodsDaoImpl;
-import com.shopping.dao.impl.UsersDaoImpl;
+import com.shopping.dao.impl.UserDaoImpl;
 import com.shopping.entity.Account;
 import com.shopping.entity.Category;
 import com.shopping.entity.Forder;
@@ -29,7 +29,7 @@ public class AccountServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	AccountDao accountDao = new AccountDaoImpl();
-	UsersDao usersDao = new UsersDaoImpl();
+	UserDao usersDao = new UserDaoImpl();
 	ForderDao forderDao = new ForderDaoImpl();
 	CategoryDao categoryDao = new CategoryDaoImpl();
 	Category category = null;
@@ -51,10 +51,10 @@ public class AccountServlet extends HttpServlet {
 			Account account = new Account();
 			account.setAlogin(request.getParameter("alogin"));
 			account.setApass(request.getParameter("apass"));
-			account = accountDao.queryAccount(account);
+			account = accountDao.get(request.getParameter("alogin"), request.getParameter("apass"));
 			if (account == null) { 
-				// µ«¬º ß∞‹
-				request.setAttribute("error", "∂‘≤ª∆µ«¬º ß∞‹!");
+				
+				request.setAttribute("error", "Áî®Êà∑ÂêçÊàñËÄÖÂØÜÁ†ÅÈîôËØØ!");
 				request.getRequestDispatcher("/view/jsp/front/alogin.jsp").forward(request,
 						response);
 			} else {
@@ -64,7 +64,7 @@ public class AccountServlet extends HttpServlet {
 		} else if (status.equals("usersManage")) {
 
 			List<User> users = new ArrayList<User>();
-			users = usersDao.getUsers();
+			users = usersDao.listAll();
 			request.getSession().setAttribute("users", users);
 
 			response.sendRedirect("/shopping/view/jsp/admin/users.jsp");
@@ -72,7 +72,7 @@ public class AccountServlet extends HttpServlet {
 			int uid = Integer.parseInt(request.getParameter("uid"));
 			usersDao.delete(uid);
 			List<User> users = new ArrayList<User>();
-			users = usersDao.getUsers();
+			users = usersDao.listAll();
 			request.getSession().setAttribute("users", users);
 
 			response.sendRedirect("/shopping/view/jsp/admin/users.jsp");
@@ -88,15 +88,15 @@ public class AccountServlet extends HttpServlet {
 			user.setUphone(request.getParameter("uphone"));
 			user.setUpost(request.getParameter("upost"));
 			user.setUsex(request.getParameter("usex"));
-			usersDao.usersModify(user);
+			usersDao.update(user);
 			List<User> users = new ArrayList<User>();
-			users = usersDao.getUsers();
+			users = usersDao.listAll();
 			request.getSession().setAttribute("users", users);
 			response.sendRedirect("/shopping/view/jsp/admin/users.jsp");
 
 		} else if (status.equals("forderManage")) {
 			List<Forder> forders = new ArrayList<Forder>();
-			forders = forderDao.getForders();
+			forders = forderDao.listAll();
 			request.getSession().setAttribute("forders", forders);
 			response.sendRedirect("/shopping/view/jsp/admin/forder.jsp");
 
@@ -106,7 +106,7 @@ public class AccountServlet extends HttpServlet {
 			forderDao.updateForderStatus(fid, sid);
 			response.sendRedirect("/shopping/view/jsp/admin/forder.jsp");
 		} else if (status.equals("categoryAndGoodsInfo")) {
-			List<Category> categorys = categoryDao.getCategorys();
+			List<Category> categorys = categoryDao.listAll();
 			request.getSession().setAttribute("categorys", categorys);
 			response.sendRedirect("/shopping/view/jsp/admin/category_goods_info.jsp");
 		} else if (status.equals("deleteCategory")) {
@@ -120,7 +120,7 @@ public class AccountServlet extends HttpServlet {
 			category.setChot(Boolean.parseBoolean(request.getParameter("chot")));
 			category.setCid(Integer.parseInt(request.getParameter("cid")));
 			category.setCtype(request.getParameter("ctype"));
-			categoryDao.categoryModify(category);
+			categoryDao.update(category);
 			response.sendRedirect("/shopping/AccountSer?status=categoryAndGoodsInfo");
 		} else if (status.equals("addCategory")) {
 			category = new Category();
@@ -177,7 +177,7 @@ public class AccountServlet extends HttpServlet {
 			response.sendRedirect("/shopping/AccountSer?status=getGoodsInfo&cid="
 					+ Integer.parseInt(request.getParameter("cid")));
 
-		} else if (status.equals("goodsList")) { // ∑÷¿‡…Ã∆∑¡–±Ì’π æ
+		} else if (status.equals("goodsList")) { // ÔøΩÔøΩÔøΩÔøΩÔøΩÔøΩ∆∑ÔøΩ–±ÔøΩ’π æ
 			List<Goods> goodslist = new ArrayList<Goods>();
 			int cid = Integer.parseInt(request.getParameter("cid"));
 			String ctype = request.getParameter("ctype");

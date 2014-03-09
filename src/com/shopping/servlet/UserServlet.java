@@ -9,14 +9,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.shopping.entity.Forder;
 import com.shopping.entity.User;
-import com.shopping.service.UsersManager;
-import com.shopping.service.impl.UsersManagerImpl;
+import com.shopping.service.UserService;
+import com.shopping.service.impl.UserServiceImpl;
 
 public class UserServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
-	UsersManager um = new UsersManagerImpl();
-
+//	UsersManager um = new UsersManagerImpl();
+	UserService um = new UserServiceImpl();
 	public void destory() {
 		super.destroy();
 	}
@@ -37,18 +37,16 @@ public class UserServlet extends HttpServlet {
 			User users = new User();
 			users.setUlogin(request.getParameter("ulogin"));
 			users.setUpass(request.getParameter("upass"));
-			users = um.usersLogin(users);
-			if (users == null) {// 登录失败
-				request.setAttribute("error", "用户名和密码错误");
+			users = um.login(request.getParameter("ulogin"), request.getParameter("upass"));
+			if (users == null) {// 锟斤拷录失锟斤拷
+				request.setAttribute("error", "鐢ㄦ埛鍚嶆垨瀵嗙爜閿欒");
 				request.getRequestDispatcher("/shopping/view/jsp/front/ulogin.jsp").forward(request,
 						response);
 			} else {
-				// 创建一个购物车方便以后购物
 				Forder forder = new Forder();
 				request.getSession().setAttribute("forder", forder);
-				request.getSession().setAttribute("users", users);// 保存用户信息
+				request.getSession().setAttribute("users", users);
 				if (request.getSession().getAttribute("goUrl") != null) {
-					// 说明用户登录成功后要跳转到想去页面
 					response.sendRedirect(request.getSession()
 							.getAttribute("goUrl").toString());
 				} else {
@@ -67,12 +65,12 @@ public class UserServlet extends HttpServlet {
 			users.setUphone(request.getParameter("uphone"));
 			users.setUpost(request.getParameter("upost"));
 			users.setUsex(request.getParameter("usex"));
-			users = um.usersRegister(users);
+			users = um.register(users);
 			if (users != null) {
-				request.getSession().setAttribute("users", users);// 保存用户信息
+				request.getSession().setAttribute("users", users);// 锟斤拷锟斤拷锟矫伙拷锟斤拷息
 				response.sendRedirect(request.getContextPath() + "/index.jsp");
 			} else {
-				request.setAttribute("error", "该用户名已被注册");
+				request.setAttribute("error", "锟斤拷锟矫伙拷锟斤拷锟窖憋拷注锟斤拷");
 				request.getRequestDispatcher("/shopping/view/jsp/front/uRegister.jsp").forward(request,
 						response);
 			}

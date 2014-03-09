@@ -22,7 +22,7 @@ public class ConextListener implements ServletContextListener {
 	public void contextInitialized(ServletContextEvent event) {
 		// TODO Auto-generated method stub
 		event.getServletContext().setAttribute("categorys",
-				categoryDaoImpl.getCategorys(""));
+				categoryDaoImpl.listByCtype(""));
 		ShoppingTimerTask shoppingTimer = new ShoppingTimerTask();
 		shoppingTimer.setApplication(event.getServletContext());
 		new Timer().schedule(shoppingTimer, 0L, 1000 * 60 * 60 * 24);

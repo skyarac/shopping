@@ -5,25 +5,44 @@ import java.util.List;
 import com.shopping.entity.Account;
 
 public interface AccountDao {
-	/*
-	 * Ìí¼Ó¿Í·ş
-	 * */
+
+	/**
+	 * @param account
+	 * æ·»åŠ å®¢æœ
+	 */
 	public void save(Account account);
-	/*
-	 * °´ÕÕ¿Í·şaid É¾³ı¿Í·ş
-	 * */
+
+	/**
+	 * @param aid
+	 * æ ¹æ®å®¢æœidåˆ é™¤å®¢æœ
+	 */
 	public void delete(String aid);
-	/*
-	 * ·µ»ØËùÓĞ¿Í·şĞÅÏ¢
-	 * */
-	public List<Account> getAccounts();
-	/*
-	 * ¸ù¾İ´«ÈëµÄ¿Í·şĞŞ¸Ä¿Í·şĞÅÏ¢
-	 * */
-	public void accountModify(Account account);
-	/*
-	 * ¸ù¾İ´«ÈëµÄ¿Í·şĞÅÏ¢Account²éÑ¯Account
-	 * */
-	public Account queryAccount(Account account);
+	
+	/**
+	 * @return
+	 * æŸ¥è¯¢å¹¶è¿”å›æ‰€æœ‰å®¢æœ
+	 */
+	public List<Account> listAll();
+	
+	/**
+	 * @param account
+	 * æ›´æ–°å®¢æœ
+	 */
+	public void update(Account account);
+	
+	/**
+	 * @param name
+	 * @param password
+	 * @return
+	 * æ ¹æ®ç”¨æˆ·åå’Œå¯†ç æŸ¥è¯¢å¹¶è¿”å›å®¢æœ
+	 */
+	public Account get(String name,String password);
+	
+	/**
+	 * @param aid
+	 * @return
+	 * æ ¹æ®å®¢æœç¼–å·è¿”å›å®¢æœä¿¡æ¯
+	 */
+	public Account get(int aid);
 
 }
