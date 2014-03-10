@@ -47,9 +47,9 @@ public class AdminContextInterceptor extends HandlerInterceptorAdapter {
 		Account account = (Account) session.getAttribute("account");
 		
 		String requestUrl = request.getRequestURL().toString();
-		
+		String return_url = request.getParameter("returnUrl");
 		for(int i = 0 ; i <this.excludeUrls.length ; i++) {
-			if(requestUrl.indexOf(this.excludeUrls[i]) != -1) {
+			if(requestUrl.indexOf(this.excludeUrls[i]) != -1 || return_url == returnUrl) {
 				return true;
 			}
 		}

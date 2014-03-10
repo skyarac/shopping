@@ -143,13 +143,14 @@ public class AccountDaoImpl implements AccountDao {
 				temp.setApass(rs.getString("apass"));
 			}
 		} catch (Exception e) {
-
 			e.printStackTrace();
 		} finally {
 
 			try {
-				rs.close();
-				pstmt.close();
+				if(null != rs)
+					rs.close();
+				if(null != pstmt)
+					pstmt.close();
 				JDBCUtil.closeConnection();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block

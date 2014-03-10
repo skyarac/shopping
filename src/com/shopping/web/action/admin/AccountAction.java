@@ -9,10 +9,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.shopping.entity.Account;
+import com.shopping.service.AccountService;
+import com.shopping.service.impl.AccountServiceImpl;
 
 @Controller
 @RequestMapping("/account")
 public class AccountAction {
+	private AccountService accountService = new AccountServiceImpl();
 
 	@RequestMapping("/account_list.do")
 	public String accountList() {
@@ -36,19 +39,21 @@ public class AccountAction {
 
 	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
 	public String login() {
+
 		return "login";
 	}
 
 	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
 	public String loginInput(HttpServletRequest request,
 			HttpServletResponse response, String username, String password) {
-		Account account = new Account();
-		account.setAlogin(username);
-		account.setApass(password);
-		System.out.println("username=" + username + "   password=" + password);
-		HttpSession session = request.getSession();
-		session.setAttribute("account", account);
-		return "redirect:index.do";
+		Account account = accountService.login(username, password);
+		if (null == account) {
+			return "login";
+		} else {
+			HttpSession session = request.getSession();
+			session.setAttribute("account", account);
+			return "redirect:index.do";
+		}
 	}
 
 	@RequestMapping(value = "/index.do")
@@ -56,4 +61,10 @@ public class AccountAction {
 		return "index";
 	}
 
+	@RequestMapping(value = "/logout.do")
+	public String logout(HttpServletRequest request) {
+		request.getSession().removeAttribute("account");
+	
+		return "login";
+	}
 }
