@@ -1,5 +1,6 @@
 package com.shopping.web.interceptor;
 
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -53,9 +54,8 @@ public class AdminContextInterceptor extends HandlerInterceptorAdapter {
 			}
 		}
 		
-		String ctx = request.getContextPath();
 		if (null == account) {
-			response.sendRedirect(ctx+this.getLoginUrl());
+			response.sendRedirect(getLoginUrl(request));
 			return false;
 		}
 		return true;
@@ -75,6 +75,17 @@ public class AdminContextInterceptor extends HandlerInterceptorAdapter {
 			throws Exception {
 		// TODO Auto-generated method stub
 		super.afterCompletion(request, response, handler, ex);
+	}
+	
+	private String getLoginUrl(HttpServletRequest request) {
+		StringBuilder buff = new StringBuilder();
+		if (loginUrl.startsWith("/")) {
+			String ctx = request.getContextPath();
+			buff.append(ctx);
+		}
+		buff.append(loginUrl).append("?");
+		buff.append("returnUrl").append("=").append(loginUrl);
+		return buff.toString();
 	}
 
 }
