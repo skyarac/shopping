@@ -12,12 +12,14 @@ import com.shopping.entity.Goods;
 import com.shopping.util.JDBCUtil;
 
 public class GoodsDaoImpl implements GoodsDao {
-
+	private JDBCUtil jdbcUtil = null;
+	
 	public void save(Goods goods) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = "INSERT INTO goods(gid,gname,gprice,gpic,gremark,gxremark,giscommend,gisopen,cid)VALUES(null,?,?,?,?,?,?,?,?)";
-		conn = JDBCUtil.getConnection();
+		jdbcUtil = new JDBCUtil();
+		conn = jdbcUtil.getConnection();
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, goods.getGname());
@@ -39,7 +41,7 @@ public class GoodsDaoImpl implements GoodsDao {
 
 				e.printStackTrace();
 			}
-			JDBCUtil.closeConnection();
+			jdbcUtil.closeConnection();
 		}
 
 	}
@@ -48,7 +50,8 @@ public class GoodsDaoImpl implements GoodsDao {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = "DELETE FROM goods WHERE gid=?";
-		conn = JDBCUtil.getConnection();
+		jdbcUtil = new JDBCUtil();
+		conn = jdbcUtil.getConnection();
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, gid);
@@ -59,11 +62,11 @@ public class GoodsDaoImpl implements GoodsDao {
 		} finally {
 			try {
 				pstmt.close();
+				conn.close();
 			} catch (Exception e) {
 
 				e.printStackTrace();
 			}
-			JDBCUtil.closeConnection();
 		}
 
 	}
@@ -72,7 +75,8 @@ public class GoodsDaoImpl implements GoodsDao {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = "UPDATE goods SET cid=?,gname=?,gprice=?,gpic=?,gremark=?,gxremark=?,giscommend=?,gisopen=? WHERE gid=?";
-		conn = JDBCUtil.getConnection();
+		jdbcUtil = new JDBCUtil();
+		conn = jdbcUtil.getConnection();
 
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -92,7 +96,7 @@ public class GoodsDaoImpl implements GoodsDao {
 		} finally {
 			try {
 				pstmt.close();
-				JDBCUtil.closeConnection();
+				conn.close();;
 			} catch (Exception e) {
 
 				e.printStackTrace();
@@ -108,7 +112,8 @@ public class GoodsDaoImpl implements GoodsDao {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		conn = JDBCUtil.getConnection();
+		jdbcUtil = new JDBCUtil();
+		conn = jdbcUtil.getConnection();
 		String sql = "SELECT * FROM goods g INNER JOIN category c ON g.cid=c.cid WHERE giscommend=1 AND gisopen=1 AND g.cid=? ORDER BY gdate DESC ";
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -145,7 +150,7 @@ public class GoodsDaoImpl implements GoodsDao {
 				e.printStackTrace();
 			}
 
-			JDBCUtil.closeConnection();
+			jdbcUtil.closeConnection();
 		}
 
 		return goods;
@@ -158,7 +163,8 @@ public class GoodsDaoImpl implements GoodsDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String sql = "SELECT * FROM goods WHERE cid=?";
-		conn = JDBCUtil.getConnection();
+		jdbcUtil = new JDBCUtil();
+		conn = jdbcUtil.getConnection();
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, cid);
@@ -191,7 +197,7 @@ public class GoodsDaoImpl implements GoodsDao {
 				e.printStackTrace();
 			}
 
-			JDBCUtil.closeConnection();
+			jdbcUtil.closeConnection();
 		}
 
 		return goods;
@@ -201,7 +207,8 @@ public class GoodsDaoImpl implements GoodsDao {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = "DELETE FROM goods WHERE cid=?";
-		conn = JDBCUtil.getConnection();
+		jdbcUtil = new JDBCUtil();
+		conn = jdbcUtil.getConnection();
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, cid);
@@ -216,7 +223,7 @@ public class GoodsDaoImpl implements GoodsDao {
 
 				e.printStackTrace();
 			}
-			JDBCUtil.closeConnection();
+			jdbcUtil.closeConnection();
 		}
 
 	}

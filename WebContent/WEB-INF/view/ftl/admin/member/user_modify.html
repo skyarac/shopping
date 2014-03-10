@@ -7,53 +7,59 @@
 		</div>
 		<div class="col-xs-2"></div>
 		<div class="col-xs-5">
-			<form class="form-horizontal" action="user_list.do" role="form">
+			<form class="form-horizontal" action="user_modify.do" role="form" method="post">
+				<div class="form-group">
+				    <label  class="col-sm-2 control-label">ID</label>
+				    <div class="col-sm-6">
+				      <input  class="form-control"  name="id" placeholder="${user.uid!}" value="${user.uid!}">
+				    </div>
+				</div>
 				<div class="form-group">
 				    <label  class="col-sm-2 control-label">登录名</label>
 				    <div class="col-sm-6">
-				      <input  class="form-control" name="username" placeholder="username">
+				      <input  class="form-control" name="username" placeholder="${user.ulogin!}" value="${user.ulogin!}">
 				    </div>
 				</div>
 				<div class="form-group">
 				    <label for="inputPassword3" class="col-sm-2 control-label">密码</label>
 				    <div class="col-sm-6">
-				      <input type="password" class="form-control" name="password" id="inputPassword3" placeholder="password">
+				      <input type="password" class="form-control" name="password" id="inputPassword3" placeholder="${user.upass!}" value="${user.upass!}">
 				    </div>
 				</div>
 				<div class="form-group">
 				    <label  class="col-sm-2 control-label">姓名</label>
 				    <div class="col-sm-6">
-				      <input  class="form-control" name="realname" placeholder="realname">
+				      <input  class="form-control" name="realname" placeholder="${user.uname!}" value="${user.uname!}">
 				    </div>
 				</div>
 				<div class="form-group">
 				    <label  class="col-sm-2 control-label">性别</label>
 				    <div class="col-sm-6">
-				      <input  class="form-control" name="gender" placeholder="gender">
+				      <input  class="form-control" name="gender" placeholder="${user.usex!}" value="${user.usex!}">
 				    </div>
 				</div>
 				<div class="form-group">
 				    <label  class="col-sm-2 control-label">电话</label>
 				    <div class="col-sm-6">
-				      <input  class="form-control" name="phone" placeholder="phone">
+				      <input  class="form-control" name="phone" placeholder="${user.uphone!}" value="${user.uphone!}">
 				    </div>
 				</div>
 				<div class="form-group">
 				    <label  class="col-sm-2 control-label">邮编</label>
 				    <div class="col-sm-6">
-				      <input  class="form-control" name="postcode" placeholder="postcode">
+				      <input  class="form-control" name="postcode" placeholder="${user.upost!}" value="${user.upost!}">
 				    </div>
 				</div>
 				<div class="form-group">
 				    <label  class="col-sm-2 control-label">邮箱</label>
 				    <div class="col-sm-6">
-				      <input  class="form-control" name="email" placeholder="email">
+				      <input  class="form-control" name="email" placeholder="${user.uemail}" value="${user.uemail}">
 				    </div>
 				</div>
 				<div class="form-group">
 				    <label  class="col-sm-2 control-label">地址</label>
 				    <div class="col-sm-6">
-				      <input  class="form-control" name="address" placeholder="address">
+				      <input  class="form-control" name="address" placeholder="${user.uaddress}" value="${user.uaddress}">
 				    </div>
 				</div>
 				<div class="form-group">

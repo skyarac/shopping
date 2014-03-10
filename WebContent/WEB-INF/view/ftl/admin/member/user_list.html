@@ -25,45 +25,21 @@
    							<th>删除</th>
    							<th>编辑</th>
    						</tr>
+   						[#list users as user]
    						<tr>
-   							<td>1</td>
-   							<td>arac</td>
-   							<td>wang</td>
-   							<td>123456</td>
-   							<td>male</td>
-   							<td>15089688296</td>
-   							<td>343009</td>
-   							<td>admin@admin.com</td>
-   							<td>江西省吉安市井冈山大学</td>
-   							<td><a href="#">删除</a></td>
-   							<td><a href="user_modify.do">编辑</a></td>
+   							<td>${user.uid}</td>
+   							<td>${user.ulogin}</td>
+   							<td>${user.uname}</td>
+   							<td>${user.upass}</td>
+   							<td>${user.usex}</td>
+   							<td>${user.uphone}</td>
+   							<td>${user.upost}</td>
+   							<td>${user.uemail}</td>
+   							<td>${user.uaddress}</td>
+   							<td><a href="user_delete.do?uid=${user.uid}">删除</a></td>
+   							<td><a href="user_modify.do?uid=${user.uid}">编辑</a></td>
    						</tr>
-   						<tr>
-   							<td>2</td>
-   							<td>arac</td>
-   							<td>wang</td>
-   							<td>123456</td>
-   							<td>male</td>
-   							<td>15089688296</td>
-   							<td>343009</td>
-   							<td>admin@admin.com</td>
-   							<td>江西省吉安市井冈山大学</td>
-   							<td><a href="#">删除</a></td>
-   							<td><a href="user_modify.do">编辑</a></td>
-   						</tr>
-   						<tr>
-   							<td>3</td>
-   							<td>arac</td>
-   							<td>wang</td>
-   							<td>123456</td>
-   							<td>male</td>
-   							<td>15089688296</td>
-   							<td>343009</td>
-   							<td>admin@admin.com</td>
-   							<td>江西省吉安市井冈山大学</td>
-   							<td><a href="#">删除</a></td>
-   							<td><a href="user_modify.do">编辑</a></td>
-   						</tr>	 
+   						[/#list]
   					 </table>	
   				   </div>
 				  </div>

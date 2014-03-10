@@ -13,12 +13,13 @@ import com.shopping.entity.Category;
 import com.shopping.util.JDBCUtil;
 
 public class CategoryDaoImpl implements CategoryDao {
-
+	private JDBCUtil jdbcUtil = null;
 	public void save(Category category) {
 		Connection conn=null;
 		PreparedStatement pstmt=null;
 		String sql="INSERT INTO category(cid,ctype,chot,aid) VALUES(null,?,?,?)";
-		conn=JDBCUtil.getConnection();
+		jdbcUtil = new JDBCUtil();
+		conn=jdbcUtil.getConnection();
 		try {
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, category.getCtype());
@@ -34,7 +35,7 @@ public class CategoryDaoImpl implements CategoryDao {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			JDBCUtil.closeConnection();
+			jdbcUtil.closeConnection();
 		}
 		
 
@@ -44,7 +45,8 @@ public class CategoryDaoImpl implements CategoryDao {
 		Connection conn=null;
 		PreparedStatement pstmt=null;
 		String sql="DELETE FROM category WHERE cid=?";
-		conn=JDBCUtil.getConnection();
+		jdbcUtil = new JDBCUtil();
+		conn=jdbcUtil.getConnection();
 		try {
 			conn.setAutoCommit(false);
 			pstmt=conn.prepareStatement(sql);
@@ -62,7 +64,7 @@ public class CategoryDaoImpl implements CategoryDao {
 				
 				e.printStackTrace();
 			}
-			JDBCUtil.closeConnection();
+			jdbcUtil.closeConnection();
 		}
 		
 		
@@ -74,7 +76,8 @@ public class CategoryDaoImpl implements CategoryDao {
 		Connection conn=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
-		conn=JDBCUtil.getConnection();
+		jdbcUtil = new JDBCUtil();
+		conn=jdbcUtil.getConnection();
 		String sql="SELECT * FROM category";
 		try {
 			pstmt=conn.prepareStatement(sql);
@@ -101,7 +104,7 @@ public class CategoryDaoImpl implements CategoryDao {
 				
 				e.printStackTrace();
 			}
-			JDBCUtil.closeConnection();
+			jdbcUtil.closeConnection();
 		}
 		
 		return categorys;
@@ -115,7 +118,8 @@ public class CategoryDaoImpl implements CategoryDao {
 		Connection conn=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
-		conn=JDBCUtil.getConnection();
+		jdbcUtil = new JDBCUtil();
+		conn=jdbcUtil.getConnection();
 		String sql="SELECT * FROM category WHERE ctype LIKE '%"+ctype+"%'";
 		try {
 			pstmt=conn.prepareStatement(sql);
@@ -143,7 +147,7 @@ public class CategoryDaoImpl implements CategoryDao {
 				
 				e.printStackTrace();
 			}
-			JDBCUtil.closeConnection();
+			jdbcUtil.closeConnection();
 		}
 		
 		return categorys;
@@ -156,7 +160,8 @@ public class CategoryDaoImpl implements CategoryDao {
 		Connection conn=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
-		conn=JDBCUtil.getConnection();
+		jdbcUtil = new JDBCUtil();
+		conn=jdbcUtil.getConnection();
 		String sql="SELECT * FROM category WHERE chot=?";
 		try {
 			pstmt=conn.prepareStatement(sql);
@@ -184,7 +189,7 @@ public class CategoryDaoImpl implements CategoryDao {
 				
 				e.printStackTrace();
 			}
-			JDBCUtil.closeConnection();
+			jdbcUtil.closeConnection();
 		}
 		
 		return categorys;
@@ -194,7 +199,8 @@ public class CategoryDaoImpl implements CategoryDao {
 		Connection conn=null;
 		PreparedStatement pstmt=null;
 		String sql="UPDATE category SET ctype=?,chot=?,aid=? WHERE cid=? ";
-		conn=JDBCUtil.getConnection();
+		jdbcUtil = new JDBCUtil();
+		conn=jdbcUtil.getConnection();
 		try {
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1,category.getCtype());
@@ -212,7 +218,7 @@ public class CategoryDaoImpl implements CategoryDao {
 				
 				e.printStackTrace();
 			}
-			JDBCUtil.closeConnection();
+			jdbcUtil.closeConnection();
 		}
 	}
 
@@ -222,7 +228,8 @@ public class CategoryDaoImpl implements CategoryDao {
 		Connection conn=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
-		conn=JDBCUtil.getConnection();
+		jdbcUtil = new JDBCUtil();
+		conn=jdbcUtil.getConnection();
 		String sql="SELECT * FROM category where cid = ?";
 		try {
 			pstmt=conn.prepareStatement(sql);
@@ -249,7 +256,7 @@ public class CategoryDaoImpl implements CategoryDao {
 				
 				e.printStackTrace();
 			}
-			JDBCUtil.closeConnection();
+			jdbcUtil.closeConnection();
 		}
 		
 		return category;

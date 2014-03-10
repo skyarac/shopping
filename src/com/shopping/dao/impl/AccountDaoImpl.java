@@ -12,12 +12,13 @@ import com.shopping.entity.Account;
 import com.shopping.util.JDBCUtil;
 
 public class AccountDaoImpl implements AccountDao {
-
+	private JDBCUtil jdbcUtil = null;
 	public void save(Account account) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
+		jdbcUtil= new JDBCUtil();
 		String sql = "INSERT INTO account(aid,alogin,aname,apass) VALUES(?,?,?,?)";
-		conn = JDBCUtil.getConnection();
+		conn = jdbcUtil.getConnection();
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, account.getAid());
@@ -30,7 +31,7 @@ public class AccountDaoImpl implements AccountDao {
 		} finally {
 			try {
 				pstmt.close();
-				JDBCUtil.closeConnection();
+				jdbcUtil.closeConnection();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -42,8 +43,9 @@ public class AccountDaoImpl implements AccountDao {
 	public void delete(String aid) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
+		jdbcUtil= new JDBCUtil();
 		String sql = "DELETE FROM account WHERE aid=?";
-		conn = JDBCUtil.getConnection();
+		conn = jdbcUtil.getConnection();
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, aid);
@@ -56,7 +58,7 @@ public class AccountDaoImpl implements AccountDao {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			JDBCUtil.closeConnection();
+			jdbcUtil.closeConnection();
 		}
 	}
 
@@ -66,8 +68,9 @@ public class AccountDaoImpl implements AccountDao {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		jdbcUtil= new JDBCUtil();
 		String sql = "SELECT * FROM account";
-		conn = JDBCUtil.getConnection();
+		conn = jdbcUtil.getConnection();
 		try {
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -86,7 +89,7 @@ public class AccountDaoImpl implements AccountDao {
 			try {
 				rs.close();
 				pstmt.close();
-				JDBCUtil.closeConnection();
+				jdbcUtil.closeConnection();
 			} catch (Exception e) {
 
 				e.printStackTrace();
@@ -101,7 +104,8 @@ public class AccountDaoImpl implements AccountDao {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = "UPDATE account SET alogin=?,aname=?,apass=? WHERE aid=?";
-		conn = JDBCUtil.getConnection();
+		jdbcUtil= new JDBCUtil();
+		conn = jdbcUtil.getConnection();
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, account.getAlogin());
@@ -118,7 +122,7 @@ public class AccountDaoImpl implements AccountDao {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-			JDBCUtil.closeConnection();
+			jdbcUtil.closeConnection();
 		}
 
 	}
@@ -128,7 +132,8 @@ public class AccountDaoImpl implements AccountDao {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		conn = JDBCUtil.getConnection();
+		jdbcUtil= new JDBCUtil();
+		conn = jdbcUtil.getConnection();
 		String sql = "SELECT * FROM account WHERE alogin=? AND apass=?";
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -151,7 +156,7 @@ public class AccountDaoImpl implements AccountDao {
 					rs.close();
 				if(null != pstmt)
 					pstmt.close();
-				JDBCUtil.closeConnection();
+				jdbcUtil.closeConnection();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -167,7 +172,8 @@ public class AccountDaoImpl implements AccountDao {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		conn = JDBCUtil.getConnection();
+		jdbcUtil= new JDBCUtil();
+		conn = jdbcUtil.getConnection();
 		String sql = "SELECT * FROM account WHERE aid=?";
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -188,7 +194,7 @@ public class AccountDaoImpl implements AccountDao {
 			try {
 				rs.close();
 				pstmt.close();
-				JDBCUtil.closeConnection();
+				jdbcUtil.closeConnection();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

@@ -16,6 +16,7 @@ import com.shopping.entity.User;
 import com.shopping.util.JDBCUtil;
 
 public class ForderDaoImpl implements ForderDao {
+	private JDBCUtil jdbcUtil = null;
 	private SorderDao sorderDao=new SorderDaoImpl();
 
 	public Forder save(Forder forder) {
@@ -23,7 +24,8 @@ public class ForderDaoImpl implements ForderDao {
 	    Connection conn=null;
 	    PreparedStatement pstmt=null;
 	    ResultSet rs=null;
-	    conn=JDBCUtil.getConnection();
+	    jdbcUtil = new JDBCUtil();
+	    conn=jdbcUtil.getConnection();
 	    String sql="INSERT INTO forder(fid,fdate,ftotal,fname,fphone,fremark,femail,fpost,faddress,aid,uid,sid)VALUES(null,null,?,?,?,?,?,?,?,?,?,?)";
 	    try {
 	    	conn.setAutoCommit(false);
@@ -60,7 +62,7 @@ public class ForderDaoImpl implements ForderDao {
 				
 				e.printStackTrace();
 			}
-			JDBCUtil.closeConnection();
+			jdbcUtil.closeConnection();
 		}
 	   
 	    
@@ -71,7 +73,8 @@ public class ForderDaoImpl implements ForderDao {
 		Connection conn=null;
 		PreparedStatement pstmt=null;
 		String sql="UPDATE forder SET sid=? WHERE fid=?";
-		conn=JDBCUtil.getConnection();
+		jdbcUtil = new JDBCUtil();
+		conn=jdbcUtil.getConnection();
 		try {
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setInt(1,sid);
@@ -87,7 +90,7 @@ public class ForderDaoImpl implements ForderDao {
 				
 				e.printStackTrace();
 			}
-			JDBCUtil.closeConnection();
+			jdbcUtil.closeConnection();
 		}
 		
 		
@@ -102,7 +105,8 @@ public class ForderDaoImpl implements ForderDao {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		String sql="SELECT * FROM forder";
-		conn=JDBCUtil.getConnection();
+		jdbcUtil = new JDBCUtil();
+		conn=jdbcUtil.getConnection();
 		try {
 			pstmt=conn.prepareStatement(sql);
 			rs=pstmt.executeQuery();
@@ -135,7 +139,7 @@ public class ForderDaoImpl implements ForderDao {
 			try {
 				rs.close();
 				pstmt.close();
-				JDBCUtil.closeConnection();
+				jdbcUtil.closeConnection();
 			} catch (Exception e) {
 				
 				e.printStackTrace();
@@ -154,7 +158,8 @@ public class ForderDaoImpl implements ForderDao {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		String sql="SELECT * FROM forder where sid= ?";
-		conn=JDBCUtil.getConnection();
+		jdbcUtil = new JDBCUtil();
+		conn=jdbcUtil.getConnection();
 		try {
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setInt(1, id);
@@ -188,7 +193,7 @@ public class ForderDaoImpl implements ForderDao {
 			try {
 				rs.close();
 				pstmt.close();
-				JDBCUtil.closeConnection();
+				jdbcUtil.closeConnection();
 			} catch (Exception e) {
 				
 				e.printStackTrace();

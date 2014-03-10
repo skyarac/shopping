@@ -12,8 +12,8 @@ public class JDBCUtil {
 	private static final String DBUSER="root";
 	private static final String DBPASSWORD="wangge";
 	
-	private static Connection conn = null;
-	static {
+	private  Connection conn = null;
+	 {
 		try {
 			Class.forName(DBDRIVER);
 			conn=DriverManager.getConnection(DBURL,DBUSER,DBPASSWORD);
@@ -21,11 +21,11 @@ public class JDBCUtil {
 			e.printStackTrace();
 		}
 	}
-	public static Connection getConnection() {
+	public  Connection getConnection() {
 		return conn;
 	}
 	
-	public static void closeConnection() {
+	public  void closeConnection() {
 		try {
 			conn.close();
 		} catch (Exception e) {

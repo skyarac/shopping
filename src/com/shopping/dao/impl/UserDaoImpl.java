@@ -12,7 +12,7 @@ import com.shopping.entity.User;
 import com.shopping.util.JDBCUtil;
 
 public class UserDaoImpl implements UserDao {
-
+	private JDBCUtil jdbcUtil = null;
 	public User save(User users) {
 		User user = users;
 
@@ -22,7 +22,8 @@ public class UserDaoImpl implements UserDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		int uid = 0;
-		conn = JDBCUtil.getConnection();
+		jdbcUtil = new JDBCUtil();
+		conn = jdbcUtil.getConnection();
 		try {
 			pstmt = conn.prepareStatement(sql,
 					PreparedStatement.RETURN_GENERATED_KEYS);
@@ -52,7 +53,7 @@ public class UserDaoImpl implements UserDao {
 
 				e.printStackTrace();
 			}
-			JDBCUtil.closeConnection();
+			jdbcUtil.closeConnection();
 		}
 		return user;
 
@@ -63,7 +64,8 @@ public class UserDaoImpl implements UserDao {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		conn = JDBCUtil.getConnection();
+		jdbcUtil = new JDBCUtil();
+		conn = jdbcUtil.getConnection();
 		String sql = "SELECT * FROM users WHERE ulogin=? AND upass=?";
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -90,7 +92,7 @@ public class UserDaoImpl implements UserDao {
 			try {
 				rs.close();
 				pstmt.close();
-				JDBCUtil.closeConnection();
+				jdbcUtil.closeConnection();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -104,7 +106,8 @@ public class UserDaoImpl implements UserDao {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = "DELETE FROM users WHERE uid=?";
-		conn = JDBCUtil.getConnection();
+		jdbcUtil = new JDBCUtil();
+		conn = jdbcUtil.getConnection();
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, uid);
@@ -119,7 +122,7 @@ public class UserDaoImpl implements UserDao {
 
 				e.printStackTrace();
 			}
-			JDBCUtil.closeConnection();
+			jdbcUtil.closeConnection();
 		}
 	}
 
@@ -130,8 +133,9 @@ public class UserDaoImpl implements UserDao {
 		ResultSet rs = null;
 		PreparedStatement pstmt = null;
 		String sql = "SELECT * FROM users";
+		jdbcUtil = new JDBCUtil();
 		try {
-			conn = JDBCUtil.getConnection();
+			conn = jdbcUtil.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			while (rs.next()) {
@@ -156,7 +160,7 @@ public class UserDaoImpl implements UserDao {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
-			JDBCUtil.closeConnection();
+			jdbcUtil.closeConnection();
 		}
 		return users;
 	}
@@ -165,8 +169,8 @@ public class UserDaoImpl implements UserDao {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = "UPDATE users SET ulogin=?,uname=?,upass=?,usex=?,uphone=?,upost=?,uemail=?,uaddress=? WHERE uid=?";
-
-		conn = JDBCUtil.getConnection();
+		jdbcUtil = new JDBCUtil();
+		conn = jdbcUtil.getConnection();
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, users.getUlogin());
@@ -190,7 +194,7 @@ public class UserDaoImpl implements UserDao {
 
 				e.printStackTrace();
 			}
-			JDBCUtil.closeConnection();
+			jdbcUtil.closeConnection();
 		}
 
 	}
@@ -203,7 +207,8 @@ public class UserDaoImpl implements UserDao {
 		ResultSet rs = null;
 		PreparedStatement pstmt = null;
 		String sql = "SELECT * FROM users WHERE ulogin=?";
-		conn = JDBCUtil.getConnection();
+		jdbcUtil = new JDBCUtil();
+		conn = jdbcUtil.getConnection();
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, userName);
@@ -232,7 +237,7 @@ public class UserDaoImpl implements UserDao {
 
 				e.printStackTrace();
 			}
-			JDBCUtil.closeConnection();
+			jdbcUtil.closeConnection();
 		}
 
 		return temp;
@@ -246,7 +251,8 @@ public class UserDaoImpl implements UserDao {
 		ResultSet rs = null;
 		PreparedStatement pstmt = null;
 		String sql = "SELECT * FROM users WHERE uid=?";
-		conn = JDBCUtil.getConnection();
+		jdbcUtil = new JDBCUtil();
+		conn = jdbcUtil.getConnection();
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, uid);
@@ -275,7 +281,7 @@ public class UserDaoImpl implements UserDao {
 
 				e.printStackTrace();
 			}
-			JDBCUtil.closeConnection();
+			jdbcUtil.closeConnection();
 		}
 
 		return temp;
