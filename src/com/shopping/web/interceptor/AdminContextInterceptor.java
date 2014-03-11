@@ -44,6 +44,7 @@ public class AdminContextInterceptor extends HandlerInterceptorAdapter {
 	public boolean preHandle(HttpServletRequest request,
 			HttpServletResponse response, Object handler) throws Exception {
 		HttpSession session = request.getSession();
+		session.setAttribute("site", "shopping");
 		Account account = (Account) session.getAttribute("account");
 		
 		String requestUrl = request.getRequestURL().toString();

@@ -34,7 +34,7 @@ public interface GoodsDao {
 	/**
 	 * @param cid
 	 * @return
-	 * 查询并返回热点并推荐商品
+	 * 根据商品类别查询并返回热点并推荐商品
 	 */
 	public List<Goods> getGiscommendGoods(int cid);
 
@@ -45,6 +45,18 @@ public interface GoodsDao {
 	 */
 	public List<Goods> getGoodsByCid(int cid);
 	
+	/**
+	 * @return
+	 * 查询并返回所有商品
+	 */
+	public List<Goods> listAll();
+
+	/**
+	 * @param gid
+	 * @return
+	 * 根据gid查询并返回商品
+	 */
+	public Goods getGoodsByGid(int gid);
 	
 
 }

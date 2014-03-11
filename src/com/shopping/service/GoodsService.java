@@ -44,4 +44,17 @@ public interface GoodsService {
 	 * 根据类别编号返回商品
 	 */
 	public List<Goods> getGoodsByCid(int cid);
+	
+	/**
+	 * @return
+	 * 查询并返回所有商品
+	 */
+	public List<Goods> listAll();
+
+	/**
+	 * @param gid
+	 * @return
+	 * 根据gid 查询并返回Goods
+	 */
+	public Goods getGoodsByGid(int gid);
 }

@@ -44,4 +44,16 @@ public class GoodsServiceImpl implements GoodsService {
 		return goodsDao.getGoodsByCid(cid);
 	}
 
+	@Override
+	public List<Goods> listAll() {
+		
+		return goodsDao.listAll();
+	}
+
+	@Override
+	public Goods getGoodsByGid(int gid) {
+		
+		return goodsDao.getGoodsByGid(gid);
+	}
+
 }

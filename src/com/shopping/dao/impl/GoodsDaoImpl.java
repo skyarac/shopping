@@ -228,4 +228,101 @@ public class GoodsDaoImpl implements GoodsDao {
 
 	}
 
+	@Override
+	public List<Goods> listAll() {
+		List<Goods> goods = new ArrayList<Goods>();
+		Goods temp = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		jdbcUtil = new JDBCUtil();
+		conn = jdbcUtil.getConnection();
+		String sql = "SELECT * FROM goods ";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				temp = new Goods();
+				Category category = new Category();
+				category.setCid(rs.getInt("cid"));
+				temp.setCategory(category);
+				temp.setGdate(rs.getDate("gdate"));
+				temp.setGid(rs.getInt("gid"));
+				temp.setGiscommend(rs.getBoolean("giscommend"));
+				temp.setGisopen(rs.getBoolean("gisopen"));
+				temp.setGname(rs.getString("gname"));
+				temp.setGpic(rs.getString("gpic"));
+				temp.setGprice(rs.getDouble("gprice"));
+				temp.setGremark(rs.getString("gremark"));
+				temp.setGxremark(rs.getString("gxremark"));
+				goods.add(temp);
+			}
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				pstmt.close();
+			} catch (Exception e) {
+
+				e.printStackTrace();
+			}
+
+			jdbcUtil.closeConnection();
+		}
+
+		return goods;
+	}
+
+	@Override
+	public Goods getGoodsByGid(int gid) {
+		List<Goods> goods = new ArrayList<Goods>();
+		Goods temp = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		jdbcUtil = new JDBCUtil();
+		conn = jdbcUtil.getConnection();
+		String sql = "SELECT * FROM goods where gid = ?";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, gid);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				temp = new Goods();
+				Category category = new Category();
+				category.setCid(rs.getInt("cid"));
+				temp.setCategory(category);
+				temp.setGdate(rs.getDate("gdate"));
+				temp.setGid(rs.getInt("gid"));
+				temp.setGiscommend(rs.getBoolean("giscommend"));
+				temp.setGisopen(rs.getBoolean("gisopen"));
+				temp.setGname(rs.getString("gname"));
+				temp.setGpic(rs.getString("gpic"));
+				temp.setGprice(rs.getDouble("gprice"));
+				temp.setGremark(rs.getString("gremark"));
+				temp.setGxremark(rs.getString("gxremark"));
+				goods.add(temp);
+			}
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				pstmt.close();
+			} catch (Exception e) {
+
+				e.printStackTrace();
+			}
+
+			jdbcUtil.closeConnection();
+		}
+
+		return goods.get(0);
+	}
+
 }
