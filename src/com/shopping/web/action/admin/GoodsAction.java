@@ -1,5 +1,8 @@
 package com.shopping.web.action.admin;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.shopping.entity.Category;
 import com.shopping.entity.Goods;
 import com.shopping.service.GoodsService;
 import com.shopping.service.impl.GoodsServiceImpl;
@@ -34,7 +38,38 @@ public class GoodsAction {
 	@RequestMapping(value = "/goods_modify.do", method = RequestMethod.POST)
 	public String goodModify(HttpServletRequest request) {
 		
-		return "goods/goods_modify";
+		 int gid = Integer.parseInt(request.getParameter("gid"));
+		String gname = request.getParameter("gname");
+		double gprice = Double.parseDouble(request.getParameter("gprice"));
+		String gpic = request.getParameter("gpic");
+		String gremark = request.getParameter("gremark");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd  HH:mm:ss");
+		Date gdate = null;
+		try {
+			gdate = sdf.parse(request.getParameter("gdate"));
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		String gxremark = request.getParameter("gxremark");
+		boolean giscommend = Boolean.parseBoolean(request.getParameter("giscommend"));
+		boolean gisopen = Boolean.parseBoolean(request.getParameter("gisopen"));
+		int cid = Integer.parseInt(request.getParameter("cid"));
+		
+		Goods goods = new Goods();
+		Category category = new Category();
+		category.setCid(cid);
+		goods.setCategory(category);
+		goods.setGdate(gdate);
+		goods.setGid(gid);
+		goods.setGiscommend(giscommend);
+		goods.setGisopen(gisopen);
+		goods.setGname(gname);
+		goods.setGpic(gpic);
+		goods.setGprice(gprice);
+		goods.setGremark(gremark);
+		goods.setGxremark(gxremark);
+		goodsService.update(goods);
+		return "redirect:goods_list.do";
 	}
 
 	@RequestMapping(value = "/goods_modify.do", method = RequestMethod.GET)

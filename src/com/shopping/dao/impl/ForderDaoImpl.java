@@ -204,4 +204,56 @@ public class ForderDaoImpl implements ForderDao {
 		return forders;
 	}
 
+	@Override
+	public Forder getForderByFid(int fid) {
+		
+		Forder forder=null;
+		Connection conn=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		String sql="SELECT * FROM forder where fid= ?";
+		jdbcUtil = new JDBCUtil();
+		conn=jdbcUtil.getConnection();
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, fid);
+			rs=pstmt.executeQuery();
+			rs.next();
+				forder=new Forder();
+				Account account=new Account();
+				account.setAid(rs.getString("aid"));
+				forder.setAccount(account);
+				forder.setFaddress(rs.getString("faddress"));
+				forder.setFdate(rs.getDate("fdate"));
+				forder.setFemail(rs.getString("femail"));
+				forder.setFid(rs.getInt("fid"));
+				forder.setFname(rs.getString("fname"));
+				forder.setFphone(rs.getString("fphone"));
+				forder.setFpost(rs.getString("fpost"));
+				forder.setFremark(rs.getString("fremark"));
+				forder.setFtotal(rs.getDouble("ftotal"));
+				Status status=new Status();
+				status.setSid(rs.getInt("sid"));
+				forder.setStatus(status);
+				User users=new User();
+				users.setUid(rs.getInt("uid"));
+				forder.setUsers(users);
+		
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			try {
+				rs.close();
+				pstmt.close();
+				jdbcUtil.closeConnection();
+			} catch (Exception e) {
+				
+				e.printStackTrace();
+			}
+			
+		}
+		
+		return forder;
+	}
+
 }

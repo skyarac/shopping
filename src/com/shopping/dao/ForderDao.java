@@ -33,4 +33,11 @@ public interface ForderDao {
 	 */
 	public List<Forder> listByStatusId(int id);
 
+	/**
+	 * @param fid
+	 * @return
+	 * 根据订单编号获取订单信息
+	 */
+	public Forder getForderByFid(int fid);
+
 }

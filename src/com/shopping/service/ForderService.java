@@ -60,4 +60,11 @@ public interface ForderService {
 	 * 根据订单的状态返回订单集合
 	 */
 	public List<Forder> listByStatusId(int statusId);
+
+	/**
+	 * @param fid
+	 * @return
+	 * 根据订单编号获取订单信息
+	 */
+	public Forder getForderByFid(int fid);
 }

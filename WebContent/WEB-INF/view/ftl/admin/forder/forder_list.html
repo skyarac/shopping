@@ -1,0 +1,70 @@
+[#include "../include/header.html"] 
+[#include "../include/nav.html"]
+<div class="container">
+	<div class="row">
+		<div class="col-xs-2">
+		[#include "../include/left.html"]
+		</div>
+		<div class="col-xs-10">
+			<div class="row">
+				<div class="panel panel-info">
+				  <div class="panel-heading">订单管理</div>
+				  <div class="panel-body">
+				   <div class="table-responsive">
+				     <table class="table">
+   						<tr>
+   							<th>订单编号</th>
+   							<th>订单日期</th>
+   							<th>订单总值</th>
+   							<th>买家姓名</th>
+   							<th>买家电话</th>
+   							<th>订单留言</th>
+   							<th>买家邮件</th>
+   							<th>买家邮编</th>
+   							<th>会员编号</th>
+   							<th>客服编号</th>
+   							<th>订单状态编号</th>
+   							<th>送货地址</th>
+   							<th>删除</th>
+   							<th>编辑</th>
+   						</tr>
+   						[#list forders as forder]
+   						<tr>
+   							<td>${forder.fid}</td>
+   							<td>${forder.fdate}</td>
+   							<td>${forder.ftotal}</td>
+   							<td>${forder.fname}</td>
+   							<td>${forder.fphone}</td>
+   							<td>${forder.fremark}</td>
+   							<td>${forder.femail}</td>
+   							<td>${forder.fpost}</td>
+   							<td>${forder.users.uid}</td>
+   							<td>${forder.account.aid}</td>
+   							<td>${forder.status.sid}</td>
+   							<td>${forder.faddress}</td>
+   							<td><a href="forder_delete.do?fid=${forder.fid}">删除</a></td>
+   							<td><a href="forder_modify.do?fid=${forder.fid}">更新</a></td>
+   						</tr>
+   						[/#list]
+  					 </table>	
+  				   </div>
+				  </div>
+				</div>
+			</div>
+			<div class="row">
+				 <ul class="pagination">
+					  <li><a href="#">&laquo;</a></li>
+					  <li><a href="#">1</a></li>
+					  <li><a href="#">2</a></li>
+					  <li><a href="#">3</a></li>
+					  <li><a href="#">4</a></li>
+					  <li><a href="#">5</a></li>
+					  <li><a href="#">&raquo;</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+[#include "../include/footer.html"]
+
+

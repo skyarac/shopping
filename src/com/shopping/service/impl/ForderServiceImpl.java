@@ -82,4 +82,10 @@ public class ForderServiceImpl implements ForderService {
 		return forder;
 	}
 
+	@Override
+	public Forder getForderByFid(int fid) {
+		
+		return forderDao.getForderByFid(fid);
+	}
+
 }

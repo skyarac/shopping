@@ -11,65 +11,65 @@
 				  <div class="panel-heading">商品修改</div>
 				  <div class="panel-body">
 				   <div class="table-responsive">
-				     <form class="form-horizontal" action="user_modify.do" role="form" method="post">
+				     <form class="form-horizontal" action="goods_modify.do" role="form" method="post">
 						<div class="form-group">
 						    <label  class="col-sm-2 control-label">ID</label>
 						    <div class="col-sm-6">
-						      <input  class="form-control"  name="gid" placeholder="${goods.gid!0}" value="${goods.gid!0}">
+						      <input type="text" class="form-control"  name="gid" placeholder="${goods.gid}" value="${goods.gid}">
 						    </div>
 						</div>
 						<div class="form-group">
 						    <label  class="col-sm-2 control-label">商品名</label>
 						    <div class="col-sm-6">
-						      <input  class="form-control" name="gname" placeholder="${goods.gname!}" value="${goods.gname!}">
+						      <input type="text" class="form-control" name="gname" placeholder="${goods.gname!}" value="${goods.gname!}">
 						    </div>
 						</div>
 						<div class="form-group">
 						    <label for="inputPassword3" class="col-sm-2 control-label">商品价格</label>
 						    <div class="col-sm-6">
-						      <input type="text" class="form-control" name="gprice" id="inputPassword3" placeholder="${goods.gprice!0}" value="${goods.gprice!0}">
+						      <input type="text" class="form-control" name="gprice" id="inputPassword3" placeholder="${goods.gprice}" value="${goods.gprice}">
 						    </div>
 						</div>
 						<div class="form-group">
 						    <label  class="col-sm-2 control-label">图片名称</label>
 						    <div class="col-sm-6">
-						      <input  class="form-control" name="gpic" placeholder="${goods.gpic!}" value="${goods.gpic!}">
+						      <input  type="text" class="form-control" name="gpic" placeholder="${goods.gpic!}" value="${goods.gpic!}">
 						    </div>
 						</div>
 						<div class="form-group">
 						    <label  class="col-sm-2 control-label">商品描述</label>
 						    <div class="col-sm-6">
-						      <input  class="form-control" name="gremark" placeholder="${goods.gremark!}" value="${goods.gremark!}">
+						      <input  type="text" class="form-control" name="gremark" placeholder="${goods.gremark!}" value="${goods.gremark!}">
 						    </div>
 						</div>
 						<div class="form-group">
 						    <label  class="col-sm-2 control-label">添加日期</label>
 						    <div class="col-sm-6">
-						      <input  class="form-control" name="gdate" placeholder="${goods.gdate?string('yyyy-MM-dd  HH:mm:ss')}" value="${goods.gdate?string('yyyy-MM-dd  HH:mm:ss')}">
+						      <input  type="text" class="form-control" name="gdate" placeholder="${goods.gdate?string('yyyy-MM-dd  HH:mm:ss')}" value="${goods.gdate?string('yyyy-MM-dd  HH:mm:ss')}">
 						    </div>
 						</div>
 						<div class="form-group">
 						    <label  class="col-sm-2 control-label">详细描述</label>
 						    <div class="col-sm-6">
-						      <input  class="form-control" name="gxremark" placeholder="${goods.gxremark!}" value="${goods.gxremark!}">
+						      <input  type="text" class="form-control" name="gxremark" placeholder="${goods.gxremark!}" value="${goods.gxremark!}">
 						    </div>
 						</div>
 						<div class="form-group">
 						    <label  class="col-sm-2 control-label">是否推荐</label>
 						    <div class="col-sm-6">
-						      <input  class="form-control" name="giscommend" placeholder="${goods.giscommend?string('true','false')}" value="${goods.giscommend?string('true','false')}">
+						      <input  type="text" class="form-control" name="giscommend" placeholder="${goods.giscommend?string('true','false')}" value="${goods.giscommend?string('true','false')}">
 						    </div>
 						</div>
 						<div class="form-group">
 						    <label  class="col-sm-2 control-label">是否有效</label>
 						    <div class="col-sm-6">
-						      <input  class="form-control" name="gisopen" placeholder="${goods.gisopen?string('true','false')}" value="${goods.gisopen?string('true','false')}">
+						      <input  type="text" class="form-control" name="gisopen" placeholder="${goods.gisopen?string('true','false')}" value="${goods.gisopen?string('true','false')}">
 						    </div>
 						</div>
 						<div class="form-group">
 						    <label  class="col-sm-2 control-label">类别编号</label>
 						    <div class="col-sm-6">
-						      <input  class="form-control" name="cid" placeholder="${goods.category.cid!}" value="${goods.category.cid!}">
+						      <input  type="text" class="form-control" name="cid" placeholder="${goods.category.cid!}" value="${goods.category.cid!}">
 						    </div>
 						</div>
 						<div class="form-group">

@@ -1,0 +1,42 @@
+[#include "../include/header.html"] 
+[#include "../include/nav.html"]
+<div class="container">
+	<div class="row">
+		<div class="col-xs-2">
+		[#include "../include/left.html"]
+		</div>
+		<div class="col-xs-2"></div>
+		<div class="col-xs-5">
+		<div class="panel panel-info">
+		<div class="panel-heading">商品修改</div>
+		<div class="panel-body">
+		<div class="table-responsive">
+				<form class="form-horizontal" action="forder_modify.do" role="form" method="post">
+					<div class="form-group">
+					    <!-- <label  class="col-sm-2 control-label">当前订单状态</label> -->
+					    <div class="col-sm-6">
+					      <input  class="form-control" type="hidden" name="fid" placeholder="${forder.fid!}" value="${forder.fid!}">
+					    </div>
+					</div>
+					<div class="form-group">
+					    <label  class="col-sm-2 control-label">当前订单状态</label>
+					    <div class="col-sm-6">
+					      <input  class="form-control"  name="sid" placeholder="${forder.status.sid!}" value="${forder.status.sid!}">
+					    </div>
+					</div>
+					
+					<div class="form-group">
+					    <div class="col-sm-offset-2 col-sm-10">
+					      <button type="submit" class="btn btn-default">修改</button>
+					    </div>
+					</div>
+				</form>
+			 </div>
+			</div>
+		  </div>
+		</div>
+	</div>
+</div>
+[#include "../include/footer.html"]
+
+
