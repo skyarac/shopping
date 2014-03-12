@@ -38,11 +38,12 @@ public class GoodsAction {
 	}
 
 	@RequestMapping(value = "/goods_modify.do", method = RequestMethod.GET)
-	public String ModifyGoods(HttpServletRequest request ) {
-		int gid = Integer.parseInt(request.getParameter("gid"));
-		Goods goods = goodsService.getGoodsByGid(gid);
-		request.setAttribute("goods", goods);
-		return "redirect:goods_modify.do";
+	public ModelAndView ModifyGoods(HttpServletRequest request,ModelAndView mv ) {
+		Integer id = Integer.parseInt(request.getParameter("gid").trim());
+		Goods goods = goodsService.getGoodsByGid(id);
+		mv.addObject("goods", goods);
+		mv.setViewName("goods/goods_modify");
+		return mv;
 	}
 
 }
