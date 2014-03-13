@@ -19,13 +19,20 @@ public class WelcomeAction {
 	public String goodsList() {
 		return "goods_list";
 	}
-
+	@RequestMapping(value="/goods_detail.do")
 	public String goodsDetail() {
 		return "goods_detail";
 	}
-
+	
+	@RequestMapping("/contact.do")
+	public String contact() {
+		return "contact";
+	}
+	
 	@RequestMapping("/buy.do")
 	public String buy() {
-		return "front/buy";
+		return "buy";
 	}
+	
+	
 }

@@ -73,6 +73,9 @@
 				<value>/logout.do</value>
 				<value>/index.do</value>
 				<value>/user_register.do</value>
+				<value>/goods_list.do</value>
+				<value>/goods_detail.do</value>
+				<value>/contact.do</value>
 			</list>
 		</property>
 	</bean>

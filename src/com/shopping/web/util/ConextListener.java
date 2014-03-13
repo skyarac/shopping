@@ -1,18 +1,13 @@
-package com.shopping.util;
+package com.shopping.web.util;
 
-import java.io.File;
-import java.io.FilenameFilter;
 import java.util.Timer;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
-import com.shopping.dao.CategoryDao;
-import com.shopping.dao.impl.CategoryDaoImpl;
 import com.shopping.service.CategoryService;
 import com.shopping.service.impl.CategoryServiceImpl;
 
-// tomcate app 
 public class ConextListener implements ServletContextListener {
 
 	private CategoryService categoryService = new CategoryServiceImpl();
@@ -28,7 +23,7 @@ public class ConextListener implements ServletContextListener {
 		shoppingTimer.setApplication(event.getServletContext());
 		new Timer().schedule(shoppingTimer, 0L, 1000 * 60 * 60 * 24);
 		 
-		File file = new File(event.getServletContext().getRealPath("/")
+		/*File file = new File(event.getServletContext().getRealPath("/")
 				+ "image/bank");
 
 		String[] fileNames = null;
@@ -43,7 +38,7 @@ public class ConextListener implements ServletContextListener {
 				}
 			});
 			event.getServletContext().setAttribute("fileNames", fileNames);
-		}
+		}*/
 
 	}
 }

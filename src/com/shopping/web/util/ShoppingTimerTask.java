@@ -1,4 +1,4 @@
-package com.shopping.util;
+package com.shopping.web.util;
 
 import com.shopping.entity.Category;
 import com.shopping.entity.Goods;
@@ -24,7 +24,7 @@ public class ShoppingTimerTask extends TimerTask {
 	@Override
 	public void run() {
 		List<List<Goods>> bigList = new ArrayList<List<Goods>>();
-
+		//取出热点类别热点商品
 		for (Category category : categoryService.listByChot(true)) {
 			List<Goods> goodss = goodsService.getGiscommendGoods(category
 					.getCid());
