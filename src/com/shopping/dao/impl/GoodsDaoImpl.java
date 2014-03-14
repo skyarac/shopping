@@ -325,4 +325,55 @@ public class GoodsDaoImpl implements GoodsDao {
 		return goods.get(0);
 	}
 
+	@Override
+	public List<Goods> getGisopenGoods(int cid) {
+		List<Goods> goods = new ArrayList<Goods>();
+		Goods temp = null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		jdbcUtil = new JDBCUtil();
+		conn = jdbcUtil.getConnection();
+		String sql = "SELECT * FROM goods g INNER JOIN category c ON g.cid=c.cid WHERE gisopen=1 AND g.cid=? ORDER BY gdate DESC ";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, cid);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				temp = new Goods();
+				Category category = new Category();
+				category.setCid(rs.getInt("cid"));
+				category.setCtype(rs.getString("ctype"));
+				category.setChot(rs.getBoolean("chot"));
+				temp.setCategory(category);
+				temp.setGdate(rs.getDate("gdate"));
+				temp.setGid(rs.getInt("gid"));
+				temp.setGiscommend(rs.getBoolean("giscommend"));
+				temp.setGisopen(rs.getBoolean("gisopen"));
+				temp.setGname(rs.getString("gname"));
+				temp.setGpic(rs.getString("gpic"));
+				temp.setGprice(rs.getDouble("gprice"));
+				temp.setGremark(rs.getString("gremark"));
+				temp.setGxremark(rs.getString("gxremark"));
+				goods.add(temp);
+			}
+
+		} catch (Exception e) {
+
+			e.printStackTrace();
+		} finally {
+			try {
+				rs.close();
+				pstmt.close();
+			} catch (Exception e) {
+
+				e.printStackTrace();
+			}
+
+			jdbcUtil.closeConnection();
+		}
+
+		return goods;
+	}
+
 }

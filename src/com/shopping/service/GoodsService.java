@@ -57,4 +57,11 @@ public interface GoodsService {
 	 * 根据gid 查询并返回Goods
 	 */
 	public Goods getGoodsByGid(int gid);
+
+	/**
+	 * @param cid
+	 * @return
+	 * 获取特定类别的有效商品
+	 */
+	public List<Goods> getGisopenGoods(int cid);
 }

@@ -57,6 +57,13 @@ public interface GoodsDao {
 	 * 根据gid查询并返回商品
 	 */
 	public Goods getGoodsByGid(int gid);
+
+	/**
+	 * @param cid
+	 * @return
+	 * 获取特定类别的有效商品
+	 */
+	public List<Goods> getGisopenGoods(int cid);
 	
 
 }

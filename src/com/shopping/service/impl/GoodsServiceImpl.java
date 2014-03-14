@@ -56,4 +56,10 @@ public class GoodsServiceImpl implements GoodsService {
 		return goodsDao.getGoodsByGid(gid);
 	}
 
+	@Override
+	public List<Goods> getGisopenGoods(int cid) {
+		
+		return goodsDao.getGisopenGoods(cid);
+	}
+
 }
