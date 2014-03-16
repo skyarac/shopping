@@ -69,8 +69,8 @@
 		<!-- 防止死循环 -->
 		<property name="excludeUrls">
 			<list>
-				<value>/login.do</value>
-				<value>/logout.do</value>
+				<value>/member/login.do</value>
+				<value>/member/logout.do</value>
 				<value>/index.do</value>
 				<value>/user_register.do</value>
 				<value>/goods_list.do</value>

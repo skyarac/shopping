@@ -8,9 +8,15 @@
                 <!--Top Links Starts-->
                 <ul class="top_links">
                     <li><a href="/${site}/index/index.do">首页</a></li>
-                    <li><a href="#">用户中心</a></li>
+                    <li><a href="/${site}/index/member/user_info.do">用户中心</a></li>
                     <li><a href="#">收藏夹</a></li>
+                    [#if user??]
+                    <li><a href="#">${user.ulogin}</a></li>
+                   	<li><a href="logout.do">退出</a></li>
+                    [#else]
+                    <li><a href="/${site}/index/member/login.do">登录</a></li>
                     <li class="highlight"><a href="/${site}/index/member/user_register.do">注册</a></li>
+                    [/#if]
                 </ul>
                 <!--Top Links Ends-->
             </div>

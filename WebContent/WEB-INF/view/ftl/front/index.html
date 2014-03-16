@@ -7,26 +7,9 @@
             <ul class="primary_nav">
             	[#list categorys as c]
                 <li class="active">
-                	<a href="#">${c.ctype}</a>
-               <!--     <ul class="sub_menu">
-                        <li> <a href="#">上衣</a>
-                            <ul>
-                                <li><a href="#">中国风</a></li>
-                                <li><a href="#">牛仔</a></li>
-                                <li><a href="#">户外运动</a></li>
-                            </ul>
-                        </li>
-                        <li> <a href="#">休闲</a>
-                            <ul>
-                                <li><a href="#">中国风</a></li>
-                                <li><a href="#">牛仔</a></li>
-                                <li><a href="#">户外运动</a></li>
-                            </ul>
-                        </li>
-                    </ul>   -->
+                	<a href="goods_list.do?cid=${c.cid!}">${c.ctype}</a>
                 </li>
                 [/#list]
-                
             </ul>
             <div class="minicart"> 
             <a href="#" class="minicart_link"> <span class="item"><b>2</b> ITEM /</span> <span class="price"><b>$69.20</b></span> </a>
@@ -51,14 +34,14 @@
                 <div class="flexslider">
                     <ul class="slides">
                         <li> <img src="/${site}/common/default/images/lm_banner_1.jpg" />
-                            <!--<div class="flex-caption">
+                            <div class="flex-caption">
                      <h3>Explore the summer collection!</h3>
-              </div>-->
+              </div>
                         </li>
                         <li> <img src="/${site}/common/default/images/lm_banner_2.jpg" />
-                            <!--<div class="flex-caption">
+                            <div class="flex-caption">
                       <h3>Shop now!</h3>
-               </div> -->
+               </div>
                         </li>
                         <li> <img src="/${site}/common/default/images/lm_banner_3.jpg" /> </li>
                     </ul>
@@ -73,15 +56,15 @@
             [#list bigList as f]
             [#if f??]
             <div class="products_list products_slider">
-                <h2 class="sub_title">[#list f as ff][#if ff_index==1]${ff.category.ctype}[/#if][/#list]</h2>
+                <h2 class="sub_title">[#list f as ff][#if ff_index==1]<a href="goods_list.do?cid=${ff.category.cid}">${ff.category.ctype}</a>[/#if][/#list]</h2>
                 <ul id="first-carousel" class="first-and-second-carousel jcarousel-skin-tango">
                		[#list f as c]
                		[#if c_index<4]
                     <li> <a class="product_image"><img src="/${site}/common/default/images/pr_l_2.jpg" /></a>
                         <div class="product_info">
-                            <h3><a href="#">${c.gname!}</a></h3>
+                            <h3><a href="goods_detail.do?gid=${c.gid!}">${c.gname!}</a></h3>
                             <small>${c.gxremark!}</small> </div>
-                        <div class="price_info"> <a href="#">+ 加入购物车</a>
+                        <div class="price_info"> <a href="shop_cart.do">+ 加入购物车</a>
                             <button class="price_add" title="" type="button"><span class="pr_price">$${c.gprice!}</span><span class="pr_add">Add to Cart</span></button>
                         </div>
                     </li>

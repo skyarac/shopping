@@ -1,0 +1,101 @@
+[#include "include/header.html"]
+<div class="wrapper">
+    [#include "include/nav.html"]
+    <div class="navigation_container"> 
+    <!--Navigation Starts-->
+    <nav>
+      <ul class="primary_nav">
+        [#list categorys as c]
+           <li class="active">
+              <a href="goods_list.do?cid=${c.cid}">${c.ctype}</a>
+           </li>
+        [/#list]
+      </ul>
+      <div class="minicart"> <a href="#" class="minicart_link"> <span class="item"><b>2</b> ITEM /</span> <span class="price"><b>$69.20</b></span> </a>
+        <div class="cart_drop"> <span class="darw"></span>
+          <ul>
+            <li><img src="/shopping/common/default/images/mini_c_item1.png" /><a href="#">Clogs Beach/Garden Clog</a> <span class="price">$49.90</span></li>
+            <li><img src="/shopping/common/default/images/mini_c_item2.png" /><a href="#">Faded chambray shorts</a> <span class="price">$12.90</span></li>
+            <div class="cart_bottom">
+              <div class="subtotal_menu"><small>Subtotal:</small><big>$69.20</big></div>
+              <a href="leisure_cart.html">Checkout</a></div>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!--Navigation Ends--> 
+  </div>
+    <div class="section_container">
+        <!--Mid Section Starts-->
+        <section>
+            <div class="full_page">
+                <h1>注册登录</h1>
+                <!--CHECKOUT STEPS STARTS-->
+                <div class="checkout_steps">
+                    <ol id="checkoutSteps">
+                        <li class="section allow active" id="opc-login">
+                            <div class="step-title"> <span class="number">1</span>
+                                <h2>用户登录</h2>
+                            </div>
+                            <div id="checkout-step-login">
+                                <div class="col2-set">
+                                    <div class="col-1">
+                                    
+                                    </div>
+                                    <div class="col-2">
+                                        <h3>登录</h3>
+                                        <form method="post" id="login-form" action="login.do"/>
+                                            <fieldset>
+                                                <h4>用户登录</h4>
+                                                <p>如果您已经注册请直接登录:</p>
+                                                <ul class="form-list">
+                                                    <li>
+                                                        <label class="required" >昵 称</label>
+                                                        <div class="input-box">
+                                                            <input type="text" value="" class="input-text" name="ulogin"/>
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                        <label class="required" >密 码</label>
+                                                        <div class="input-box">
+                                                            <input type="password" class="input-text" name="upass" />
+                                                        </div>
+                                                    </li>
+                                                    <li>
+                                                    	<input type="submit" value="提交"/>
+                                                    </li>
+                                                </ul>
+                                                <br />
+                                                <br />
+                                            </fieldset>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+                <!--CHECKOUT STEPS ENDS-->
+                <div class="col_right">
+                    <div class="block-progress">
+                        <div class="block-title">Your Checkout Progress</div>
+                            <ul>
+                                <li>Billing Address</li>
+                                <li>Shipping Address</li>
+                                <li>Shipping Method</li>
+                                <li>Payment Method</li>
+                            </ul>
+                    </div>
+                    <div class="right_promo">
+                    <img src="/${site}/common/default/images/side_promo_banner.jpg" />
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+        <!--Mid Section Ends-->
+    </div>
+    [#include "include/footer.html"]
+</div>
+</body>
+</html>

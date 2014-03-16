@@ -5,61 +5,11 @@
     <!--Navigation Starts-->
     <nav>
       <ul class="primary_nav">
-        <li class="active"><a href="good_list.html">Women</a> 
-          <!--SUbmenu Starts-->
-          <ul class="sub_menu">
-            <li> <a href="#">Dresses</a>
-              <ul>
-                <li><a href="#">Skirts</a></li>
-                <li><a href="#">Shorts</a></li>
-                <li><a href="#">Premium Pants</a></li>
-                <li><a href="#">Khakis</a></li>
-                <li><a href="#">Casual Pants</a></li>
-                <li><a href="#">Jeans</a></li>
-                <li><a href="#">Outerwear & Blazers</a></li>
-              </ul>
-            </li>
-            <li> <a href="#">Accessories</a>
-              <ul>
-                <li><a href="#">Sunglasses</a></li>
-                <li><a href="#">Scarves</a></li>
-                <li><a href="#">Hair Accessories</a></li>
-                <li><a href="#">Hats and Gloves</a></li>
-                <li><a href="#">Lifestyle</a></li>
-                <li><a href="#">Jeans</a></li>
-                <li><a href="#">Outerwear & Blazers</a></li>
-              </ul>
-            </li>
-          </ul>
-          <!--SUbmenu Ends--> 
-        </li>
-        <li><a href="good_list.html">Men</a> 
-          <!--SUbmenu Starts-->
-          <ul class="sub_menu">
-            <li> <a href="#">Men Summer Collection</a>
-              <ul>
-                <li><a href="#">Premium Pants</a></li>
-                <li><a href="#">Khakis</a></li>
-                <li><a href="#">Casual Pants</a></li>
-                <li><a href="#">Jeans</a></li>
-                <li><a href="#">Outerwear & Blazers</a></li>
-              </ul>
-            </li>
-            <li> <a href="#">Accessories</a>
-              <ul>
-                <li><a href="#">Sunglasses</a></li>
-                <li><a href="#">Scarves</a></li>
-                <li><a href="#">Hair Accessories</a></li>
-                <li><a href="#">Hats and Gloves</a></li>
-                <li><a href="#">Jeans</a></li>
-              </ul>
-            </li>
-          </ul>
-          <!--SUbmenu Ends--> 
-        </li>
-        <li><a href="good_list.html">Kids</a></li>
-        <li><a href="good_list.html">Fashion</a></li>
-        <li><a href="#">Accessories</a></li>
+        [#list categorys as c]
+           <li class="active">
+              <a href="goods_list.do?cid=${c.cid}">${c.ctype}</a>
+           </li>
+        [/#list]
       </ul>
       <div class="minicart"> <a href="#" class="minicart_link"> <span class="item"><b>2</b> ITEM /</span> <span class="price"><b>$69.20</b></span> </a>
         <div class="cart_drop"> <span class="darw"></span>

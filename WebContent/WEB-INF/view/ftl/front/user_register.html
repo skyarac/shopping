@@ -1,0 +1,113 @@
+[#include "include/header.html"]
+<div class="wrapper">
+    [#include "include/nav.html"]
+    <div class="navigation_container"> 
+    <!--Navigation Starts-->
+    <nav>
+      <ul class="primary_nav">
+        [#list categorys as c]
+           <li class="active">
+              <a href="goods_list.do?cid=${c.cid}">${c.ctype}</a>
+           </li>
+        [/#list]
+      </ul>
+      <div class="minicart"> <a href="#" class="minicart_link"> <span class="item"><b>2</b> ITEM /</span> <span class="price"><b>$69.20</b></span> </a>
+        <div class="cart_drop"> <span class="darw"></span>
+          <ul>
+            <li><img src="/shopping/common/default/images/mini_c_item1.png" /><a href="#">Clogs Beach/Garden Clog</a> <span class="price">$49.90</span></li>
+            <li><img src="/shopping/common/default/images/mini_c_item2.png" /><a href="#">Faded chambray shorts</a> <span class="price">$12.90</span></li>
+            <div class="cart_bottom">
+              <div class="subtotal_menu"><small>Subtotal:</small><big>$69.20</big></div>
+              <a href="leisure_cart.html">Checkout</a></div>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!--Navigation Ends--> 
+  </div>
+    <div class="section_container">
+        <!--Mid Section Starts-->
+        <section>
+            <div class="full_page">
+                <h1>注册登录</h1>
+                <!--CHECKOUT STEPS STARTS-->
+                <div class="checkout_steps">
+                    <ol id="checkoutSteps">
+                        <li class="section allow active" id="opc-login">
+                            <div class="step-title"> <span class="number">1</span>
+                                <h2>注册登录</h2>
+                            </div>
+                            <div id="checkout-step-login">
+                                <div class="col2-set">
+                                    <div class="col-1">
+                                        <h3>用户注册</h3>
+                                        <p>请认真阅读用户手册后注册:</p>
+                                        <form action="user_register.do" method="post">
+                                        <ul class="form-list">
+                                            <li class="control">
+                                            	<label>昵 称</label>
+                                                <input type="text"    name="ulogin" />
+                                            </li>
+                                            <li class="control">
+                                            	<label>密 码</label>
+                                                <input type="password"    name="upass" />
+                                            </li>
+                                            <li class="control">
+                                            	<label>姓 名</label>
+                                                <input type="text"    name="uname" />
+                                            </li>
+                                            <li class="control">
+                                            	<label>性 别</label>
+                                                <input type="text"    name="usex" />
+                                            </li>
+                                            <li class="control">
+                                            	<label>电 话</label>
+                                                <input type="text"    name="uname" />
+                                            </li>
+                                            <li class="control">
+                                            	<label>邮 编</label>
+                                                <input type="text"    name="upost" />
+                                            </li>
+                                            <li class="control">
+                                            	<label>邮 箱</label>
+                                                <input type="text"    name="uemail" />
+                                            </li>
+                                            <li class="control">
+                                            	<label>地 址</label>
+                                                <input type="text"    name="uaddress" />
+                                            </li>
+                                            <li class="control">
+                                           	 	<label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                                <input type="submit"    value="提交" />
+                                            </li>
+                                        </ul>
+                                        </form>
+                                    </div>
+                                </div>
+                                
+                    </ol>
+                </div>
+                <!--CHECKOUT STEPS ENDS-->
+                <div class="col_right">
+                    <div class="block-progress">
+                        <div class="block-title">Your Checkout Progress</div>
+                            <ul>
+                                <li>Billing Address</li>
+                                <li>Shipping Address</li>
+                                <li>Shipping Method</li>
+                                <li>Payment Method</li>
+                            </ul>
+                    </div>
+                    <div class="right_promo">
+                    <img src="/shopping/common/default/images/side_promo_banner.jpg" />
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+        <!--Mid Section Ends-->
+    </div>
+    [#include "include/footer.html"]
+</div>
+</body>
+</html>
