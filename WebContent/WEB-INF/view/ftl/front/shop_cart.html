@@ -7,7 +7,7 @@
       <ul class="primary_nav">
         [#list categorys as c]
             <li class="active">
-               <a href="#">${c.ctype}</a>
+               <a href="goods_list.do?cid=${c.cid}">${c.ctype}</a>
             </li>
         [/#list]
       </ul>
@@ -30,81 +30,47 @@
     <section> 
       <!--CART STARTS-->
       <div id="shopping_cart" class="full_page">
-        <h1>Shopping Cart</h1>
+        <h1>购物车</h1>
         <div class="message success">Notch-collar shirt was added to your shopping cart.</div>
         <div class="action_buttonbar">
-          <button type="button" title="" class="continue">Continue Shopping</button>
-          <button type="button" onclick="parent.location='leisure_checkout.html'" title="" class="checkout">Checkout</button>
+          <button type="button" title="" class="continue">继续购物</button>
+          <button type="button" onclick="parent.location='leisure_checkout.html'" title="" class="checkout">结账</button>
         </div>
         <div class="cart_table">
           <table class="data-table cart-table" id="shopping-cart-table" cellpadding="0" cellspacing="0">
             <tr>
-              <th colspan="2">Products</th>
+              <th colspan="2">商品</th>
+              <th class="align_center" width="12%">单价</th>
+              <th class="align_center" width="10%">数量</th>
+             
               <th class="align_center" width="6%"></th>
-              <th class="align_center" width="12%">Unit Price</th>
-              <th class="align_center" width="10%">Qty</th>
-              <th class="align_center" width="12%">Subtotal</th>
-              <th class="align_center" width="6%"></th>
             </tr>
-            <tr>
-              <td width="10%"><img src="/shopping/common/default/images/cart1.jpg" /></td>
-              <td class="align_left" width="44%"><a class="pr_name" href="#">Notch-collar shirt</a><span class="pr_info">Proin gravida </span></td>
-              <td class="align_center"><a href="#" class="edit">Edit</a></td>
-              <td class="align_center vline"><span class="price">$49.90</span></td>
-              <td class="align_center vline"><input class="qty_box" type="text" /></td>
-              <td class="align_center vline"><span class="price">$49.90</span></td>
-              <td class="align_center vline"><a href="#" class="remove"></a></td>
-            </tr>
-            <tr>
-              <td><img src="/shopping/common/default/images/cart2.jpg" /></td>
-              <td class="align_left" width="44%"><a class="pr_name" href="#">Notch-collar shirt</a><span class="pr_info">Proin gravida </span></td>
-              <td class="align_center"><a href="#" class="edit">Edit</a></td>
-              <td class="align_center vline"><span class="price">$49.90</span></td>
-              <td class="align_center vline"><input class="qty_box" type="text" /></td>
-              <td class="align_center vline"><span class="price">$49.90</span></td>
-              <td class="align_center vline"><a href="#" class="remove"></a></td>
-            </tr>
+            [#list forder.sorders as sorder]
+	            <tr>
+	              <td width="10%"><img src="/${site}/common/default/images/cart1.jpg" /></td>
+	              <td class="align_left" width="44%"><a class="pr_name" href="#">${sorder.sname!}</a><span class="pr_info">${sorder.sname!} </span></td>
+	              <td class="align_center vline"><span class="price">${sorder.sprice!}</span></td>
+	              <td class="align_center vline"><input class="qty_box" type="text" value="${sorder.snumber!}"/></td>
+	              <td class="align_center vline"><a href="cart_edit.do?gid=${sorder.goods.gid}" class="remove"></a></td>
+	            </tr>
+            [/#list]
+            
           </table>
           <div class="totals">
             <table id="totals-table">
                 <tr>
-                  <td width="60%" colspan="1" class="align_left"><strong>Subtotal</strong></td>
-                  <td class="align_right" style=""><strong><span class="price">$109.00</span></strong></td>
-                </tr>
-                <tr>
-                  <td width="60%" colspan="1" class="align_left">Shipping cost</td>
-                  <td class="align_right" style=""><span class="price">$0.00</span></td>
-                </tr>
-                <tr>
-                  <td width="60%" colspan="1" class="align_left total">Grand Total</td>
-                  <td class="align_right" style=""><span class="total">$109.00</span></td>
+                  <td width="60%" colspan="1" class="align_left total">总计</td>
+                  <td class="align_right" style=""><span class="total">${forder.ftotal!}</span></td>
                 </tr>                
             </table>
           </div>
         </div>
         <div class="action_buttonbar">
-          <button type="button" title="" class="continue">Continue Shopping</button>
-          <button type="button" onclick="parent.location='leisure_checkout.html'" title="" class="checkout">Checkout</button>
+          <button type="button" title="" class="continue">继续购物</button>
+          <button type="button" onclick="parent.location='buy.do'" title="" class="checkout">结账</button>
         </div>
       </div>
       <!--CART ENDS--> 
-      
-      <div class="checkout_tax">
-      	<div class="shipping_tax">
-        	<h4>Estimate Shipping and Tax</h4>
-            <p>Enter your destination to get a shipping estimate.</p>
-            <label>Country</label><select><option />Canada</select><label>Postal code</label><input type="text" />
-            <br class="clear" />
-            <label>State</label><select><option />Vancouver</select>
-            <button type="button" title="" class="brown_btn">Get a Quote</button>
-        </div>
-        <div class="checkout_discount">
-        	<h4>Discount codes</h4>
-            <p>Enter your coupon code if you have one.</p>
-            <input type="text" />
-            <button type="button" title="" class="brown_btn">Apply Coupon</button>
-        </div>
-      </div>
     </section>
     <!--Mid Section Ends--> 
   </div>

@@ -40,8 +40,8 @@
                         </li>
                         <li> <img src="/${site}/common/default/images/lm_banner_2.jpg" />
                             <div class="flex-caption">
-                      <h3>Shop now!</h3>
-               </div>
+                      			<h3>Shop now!</h3>
+               				</div>
                         </li>
                         <li> <img src="/${site}/common/default/images/lm_banner_3.jpg" /> </li>
                     </ul>
@@ -64,7 +64,7 @@
                         <div class="product_info">
                             <h3><a href="goods_detail.do?gid=${c.gid!}">${c.gname!}</a></h3>
                             <small>${c.gxremark!}</small> </div>
-                        <div class="price_info"> <a href="shop_cart.do">+ 加入购物车</a>
+                        <div class="price_info"> <a href="shop_cart.do?gid=${c.gid!}">+ 加入购物车</a>
                             <button class="price_add" title="" type="button"><span class="pr_price">$${c.gprice!}</span><span class="pr_add">Add to Cart</span></button>
                         </div>
                     </li>

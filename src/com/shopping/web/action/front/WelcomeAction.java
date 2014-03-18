@@ -11,12 +11,16 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.shopping.entity.Category;
+import com.shopping.entity.Forder;
 import com.shopping.entity.Goods;
+import com.shopping.entity.Sorder;
 import com.shopping.entity.User;
 import com.shopping.service.CategoryService;
+import com.shopping.service.ForderService;
 import com.shopping.service.GoodsService;
 import com.shopping.service.UserService;
 import com.shopping.service.impl.CategoryServiceImpl;
+import com.shopping.service.impl.ForderServiceImpl;
 import com.shopping.service.impl.GoodsServiceImpl;
 import com.shopping.service.impl.UserServiceImpl;
 
@@ -27,6 +31,7 @@ public class WelcomeAction {
 	private CategoryService categoryService = new CategoryServiceImpl();
 	private GoodsService goodsService = new GoodsServiceImpl();
 	private UserService userService = new UserServiceImpl();
+	private ForderService forderService = new ForderServiceImpl();
 
 	@RequestMapping("/index.do")
 	public ModelAndView index(ModelAndView mv) {
@@ -77,14 +82,41 @@ public class WelcomeAction {
 	}
 
 	@RequestMapping("/buy.do")
-	public String buy() {
-		return "buy";
+	public ModelAndView buy(HttpServletRequest request,ModelAndView mv) {
+		mv.addObject("forder", request.getSession().getAttribute("forder"));
+		mv.setViewName("buy");
+		return mv;
 	}
 	
-	@RequestMapping("/shop_cart.do")
-	public String cart() {
+	@RequestMapping("/cart_edit.do")
+	public ModelAndView cartEdit(HttpServletRequest request,ModelAndView mv) {
+		int gid = Integer.parseInt(request.getParameter("gid"));
+		Forder forder= (Forder) request.getSession().getAttribute("forder");
+		forderService.deleteSorder(forder, gid);
+		mv.addObject("forder", forder);
+		mv.setViewName("redirect:shop_cart.do");
+		return mv;
+	}
+	
+	@RequestMapping(value="/shop_cart.do",method=RequestMethod.GET)
+	public ModelAndView cart(HttpServletRequest request,ModelAndView mv) {
+		int gid = Integer.parseInt(request.getParameter("gid"));
+		Forder forder = (Forder) request.getSession().getAttribute("forder");
 		
-		return "shop_cart";
+		Goods goods = goodsService.getGoodsByGid(gid);
+		Sorder sorder = new Sorder();
+		sorder.setGoods(goods);
+		sorder.setSname(goods.getGname());
+		sorder.setSnumber(1);
+		sorder.setSprice(goods.getGprice());
+		
+		forder = forderService.addSorder(forder, sorder);
+		request.getSession().setAttribute("forder", forder);
+		
+		mv.addObject("forder", forder);
+		mv.setViewName("shop_cart");
+		
+		return mv;
 	}
 	
 	@RequestMapping(value="/member/user_info.do",method=RequestMethod.GET)
@@ -138,6 +170,8 @@ public class WelcomeAction {
 		User user = userService.login(ulogin, upass);
 		if(null != user) {
 			request.getSession().setAttribute("user", user);
+			Forder forder = new Forder();
+			request.getSession().setAttribute("forder", forder);
 		}
 		return "redirect:/index/index.do";
 	}
