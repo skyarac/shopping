@@ -82,56 +82,56 @@ public class WelcomeAction {
 	}
 
 	@RequestMapping("/buy.do")
-	public ModelAndView buy(HttpServletRequest request,ModelAndView mv) {
+	public ModelAndView buy(HttpServletRequest request, ModelAndView mv) {
 		mv.addObject("forder", request.getSession().getAttribute("forder"));
 		mv.setViewName("buy");
 		return mv;
 	}
-	
+
 	@RequestMapping("/cart_edit.do")
-	public ModelAndView cartEdit(HttpServletRequest request,ModelAndView mv) {
+	public ModelAndView cartEdit(HttpServletRequest request, ModelAndView mv) {
+		
 		int gid = Integer.parseInt(request.getParameter("gid"));
-		Forder forder= (Forder) request.getSession().getAttribute("forder");
+		Forder forder = (Forder) request.getSession().getAttribute("forder");
 		forderService.deleteSorder(forder, gid);
 		mv.addObject("forder", forder);
 		mv.setViewName("redirect:shop_cart.do");
 		return mv;
 	}
-	
-	@RequestMapping(value="/shop_cart.do",method=RequestMethod.GET)
-	public ModelAndView cart(HttpServletRequest request,ModelAndView mv) {
+
+	@RequestMapping(value = "/shop_cart.do", method = RequestMethod.GET)
+	public ModelAndView cart(HttpServletRequest request, ModelAndView mv) {
 		int gid = Integer.parseInt(request.getParameter("gid"));
 		Forder forder = (Forder) request.getSession().getAttribute("forder");
-		
+
 		Goods goods = goodsService.getGoodsByGid(gid);
 		Sorder sorder = new Sorder();
 		sorder.setGoods(goods);
 		sorder.setSname(goods.getGname());
 		sorder.setSnumber(1);
 		sorder.setSprice(goods.getGprice());
-		
+
 		forder = forderService.addSorder(forder, sorder);
 		request.getSession().setAttribute("forder", forder);
-		
+
 		mv.addObject("forder", forder);
 		mv.setViewName("shop_cart");
-		
+
 		return mv;
 	}
-	
-	@RequestMapping(value="/member/user_info.do",method=RequestMethod.GET)
+
+	@RequestMapping(value = "/member/user_info.do", method = RequestMethod.GET)
 	public String userInfo() {
 		return "user_info";
 	}
-	
-	
-	@RequestMapping(value="/member/user_register.do" ,method=RequestMethod.GET)
+
+	@RequestMapping(value = "/member/user_register.do", method = RequestMethod.GET)
 	public String userRegister() {
-		
+
 		return "user_register";
 	}
-	
-	@RequestMapping(value="/member/user_register.do",method=RequestMethod.POST)
+
+	@RequestMapping(value = "/member/user_register.do", method = RequestMethod.POST)
 	public String Register(HttpServletRequest request) {
 		User user = new User();
 		user.setUaddress(request.getParameter("uaddress"));
@@ -145,37 +145,38 @@ public class WelcomeAction {
 		user = userService.register(user);
 		return "redirect:/index/index.do";
 	}
-	
-	@RequestMapping(value="/user_update.do",method=RequestMethod.GET)
+
+	@RequestMapping(value = "/user_update.do", method = RequestMethod.GET)
 	public String userUpdate() {
 		return "user_update";
 	}
-	
-	@RequestMapping(value="/user_update.do",method=RequestMethod.POST)
+
+	@RequestMapping(value = "/user_update.do", method = RequestMethod.POST)
 	public String updateUser() {
-		
+
 		return "redirect:/index/index.do";
 	}
-	
-	@RequestMapping(value="/member/login.do",method=RequestMethod.GET)
+
+	@RequestMapping(value = "/member/login.do", method = RequestMethod.GET)
 	public String userLogin(HttpServletRequest request) {
-		
+
 		return "user_login";
 	}
-	
-	@RequestMapping(value="/member/login.do",method=RequestMethod.POST)
+
+	@RequestMapping(value = "/member/login.do", method = RequestMethod.POST)
 	public String login(HttpServletRequest request) {
 		String ulogin = request.getParameter("ulogin");
 		String upass = request.getParameter("upass");
 		User user = userService.login(ulogin, upass);
-		if(null != user) {
+		if (null != user) {
 			request.getSession().setAttribute("user", user);
 			Forder forder = new Forder();
 			request.getSession().setAttribute("forder", forder);
 		}
 		return "redirect:/index/index.do";
 	}
-	@RequestMapping(value="/logout.do")
+
+	@RequestMapping(value = "/logout.do")
 	public String loginOut(HttpServletRequest request) {
 		request.getSession().removeAttribute("user");
 		return "redirect:index.do";
