@@ -41,24 +41,50 @@
                                 <div class="col2-set">
                                     <div class="col-1">
                                         <h3>注册用户支付</h3>
+                                        <form id="pay" action="pay.do" method="post">
                                         <ul class="form-list">
                                             <li class="control">
-                                                <input type="radio" class="radio" value="guest" id="login:guest" name="checkout_method" />
-                                                <label>Checkout as Guest</label>
+                                            	<label>订单总价</label>
+                                                <input type="text"  value="${forder.ftotal!}" id="login:guest" name="ftotal" />
                                             </li>
                                             <li class="control">
-                                                <input type="radio" class="radio" value="register" id="login:register" name="checkout_method" />
-                                                <label>Register</label>
+                                            <label>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名</label>
+                                                <input type="text"  value="${forder.fname!}" id="login:register" name="fname" />
+                                            </li>
+                                            <li class="control">
+                                            	<label>送货电话</label>
+                                                <input type="text"  value="${forder.fphone!}" id="login:guest" name="fphone" />
+                                            </li>
+                                            <li class="control">
+                                            	<label>送货留言</label>
+                                                <input type="text"  value="${forder.fremark!}" id="login:guest" name="fremark" />
+                                            </li>
+                                            <li class="control">
+                                            	<label>送货邮箱</label>
+                                                <input type="text"  value="${forder.femail!}" id="login:guest" name="femail" />
+                                            </li>
+                                            <li class="control">
+                                            	<label>送货邮编</label>
+                                                <input type="text"  value="${forder.fpost!}" id="login:guest" name="fpost" />
+                                            </li>
+                                            <li class="control">
+                                            	<label>送货地址</label>
+                                                <input type="text"  value="${forder.faddress!}" id="login:guest" name="faddress" />
                                             </li>
                                         </ul>
+                                        </form>
                                         
                                     </div>
-                                    
+                                    <script type="text/javascript">
+                                    	function pay() {
+                                    		 document.getElementById("pay").submit();
+                                    	}
+                                    </script>
                                 </div>
                                 <div class="col2-set">
                                     <div class="col-1">
                                         <div class="buttons-set">
-                                            <button class="button brown_btn" type="button">支付</button>
+                                            <button class="button brown_btn" type="button" onclick="pay();">支付</button>
                                         </div>
                                     </div>
                                    
@@ -79,7 +105,7 @@
                             </ul>
                     </div>
                     <div class="right_promo">
-                    <img src="/shopping/common/default/images/side_promo_banner.jpg" />
+                    <img src="/${site}/common/default/images/side_promo_banner.jpg" />
                     </div>
                 </div>
             </div>

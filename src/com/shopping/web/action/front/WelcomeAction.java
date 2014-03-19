@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.shopping.entity.Account;
 import com.shopping.entity.Category;
 import com.shopping.entity.Forder;
 import com.shopping.entity.Goods;
 import com.shopping.entity.Sorder;
+import com.shopping.entity.Status;
 import com.shopping.entity.User;
 import com.shopping.service.CategoryService;
 import com.shopping.service.ForderService;
@@ -81,17 +83,50 @@ public class WelcomeAction {
 		return "contact";
 	}
 
-	@RequestMapping("/buy.do")
+	@RequestMapping(value="/buy.do",method=RequestMethod.GET)
 	public ModelAndView buy(HttpServletRequest request, ModelAndView mv) {
+		mv.addObject("user", request.getSession().getAttribute("user"));
 		mv.addObject("forder", request.getSession().getAttribute("forder"));
 		mv.setViewName("buy");
 		return mv;
 	}
+	
+	@RequestMapping(value="/pay.do",method=RequestMethod.POST)
+	public String pay(HttpServletRequest request) {
+		User user = (User) request.getSession().getAttribute("user");
+		String fname = request.getParameter("fname");
+		String fphone = request.getParameter("fphone");
+		String fremark = request.getParameter("fremark");
+		String femail = request.getParameter("femail");
+		String fpost = request.getParameter("fpost");
+		String faddress = request.getParameter("faddress");
+		
+		Forder forder = (Forder) request.getSession().getAttribute("forder");
+		forder.setFname(fname);
+		forder.setFphone(fphone);
+		forder.setFremark(fremark);
+		forder.setFemail(femail);
+		forder.setFpost(fpost);
+		forder.setFaddress(faddress);
+		forder.setUsers(user);
+		
+		Account account = new Account();
+		account.setAid("tom");
+		forder.setAccount(account);
+		
+		Status status = new Status();
+		status.setSid(0);
+		
+		forder.setStatus(status);
+		
+		forderService.save(forder);
+		return "pay";
+	}
 
 	@RequestMapping("/cart_edit.do")
 	public ModelAndView cartEdit(HttpServletRequest request, ModelAndView mv) {
-		
-		int gid = Integer.parseInt(request.getParameter("gid"));
+		String id = request.getParameter("gid");
+		int gid = Integer.parseInt(id);
 		Forder forder = (Forder) request.getSession().getAttribute("forder");
 		forderService.deleteSorder(forder, gid);
 		mv.addObject("forder", forder);
@@ -101,18 +136,24 @@ public class WelcomeAction {
 
 	@RequestMapping(value = "/shop_cart.do", method = RequestMethod.GET)
 	public ModelAndView cart(HttpServletRequest request, ModelAndView mv) {
-		int gid = Integer.parseInt(request.getParameter("gid"));
+		
 		Forder forder = (Forder) request.getSession().getAttribute("forder");
-
-		Goods goods = goodsService.getGoodsByGid(gid);
-		Sorder sorder = new Sorder();
-		sorder.setGoods(goods);
-		sorder.setSname(goods.getGname());
-		sorder.setSnumber(1);
-		sorder.setSprice(goods.getGprice());
-
-		forder = forderService.addSorder(forder, sorder);
-		request.getSession().setAttribute("forder", forder);
+		
+		String id = request.getParameter("gid");
+		
+		if(null != id && !"".equals(id)) {
+			int gid = Integer.parseInt(id);
+			Goods goods = goodsService.getGoodsByGid(gid);
+			Sorder sorder = new Sorder();
+			sorder.setGoods(goods);
+			sorder.setSname(goods.getGname());
+			sorder.setSnumber(1);
+			sorder.setSprice(goods.getGprice());
+			forder = forderService.addSorder(forder, sorder);
+			
+			request.getSession().setAttribute("forder", forder);
+		}
+		
 
 		mv.addObject("forder", forder);
 		mv.setViewName("shop_cart");
