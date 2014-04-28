@@ -10,7 +10,7 @@ public class JDBCUtil {
 	private static  final String DBDRIVER="com.mysql.jdbc.Driver";
 	private static final String DBURL="jdbc:mysql://localhost:3306/myshopping";
 	private static final String DBUSER="root";
-	private static final String DBPASSWORD="wangge";
+	private static final String DBPASSWORD="123456";
 	
 	private  Connection conn = null;
 	 {
